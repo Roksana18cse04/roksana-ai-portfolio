@@ -34,6 +34,18 @@ const Hero = () => {
       {/* Content */}
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-4xl mx-auto">
+          {/* Profile Image */}
+          <div className={`mb-8 ${isLoaded ? 'animate-fade-in-up' : 'opacity-0'}`}>
+            <div className="relative inline-block">
+              <img 
+                src="/Roksana.png" 
+                alt="Roksana Akter" 
+                className="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-primary/20 shadow-glow mx-auto mb-6 object-cover hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute inset-0 rounded-full border-4 border-primary/30 animate-pulse"></div>
+            </div>
+          </div>
+          
           <div className={`mb-8 ${isLoaded ? 'animate-fade-in-up' : 'opacity-0'}`}>
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
               <span className="gradient-primary bg-clip-text text-transparent inline-block">
@@ -66,9 +78,12 @@ const Hero = () => {
               size="lg" 
               variant="outline"
               className="border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:scale-105 transition-all duration-300 group"
+              asChild
             >
-              <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
-              Download CV
+              <a href="/Roksana_Akter_RESUME.pdf" download="Roksana_Akter_RESUME.pdf">
+                <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
+                Download CV
+              </a>
             </Button>
           </div>
 
@@ -80,7 +95,7 @@ const Hero = () => {
               className="hover:text-ai-blue hover:scale-110 transition-all duration-300 group animate-float"
               asChild
             >
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/Roksana18cse04" target="_blank" rel="noopener noreferrer">
                 <Github className="h-6 w-6 group-hover:animate-pulse" />
               </a>
             </Button>
@@ -91,7 +106,7 @@ const Hero = () => {
               style={{ animationDelay: '0.5s' }}
               asChild
             >
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://linkedin.com/in/roksana00mymensingh/" target="_blank" rel="noopener noreferrer">
                 <Linkedin className="h-6 w-6 group-hover:animate-pulse" />
               </a>
             </Button>

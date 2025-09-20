@@ -7,12 +7,12 @@ const Footer = () => {
   const socialLinks = [
     {
       icon: Github,
-      href: "https://github.com",
+      href: "https://github.com/Roksana18cse04",
       label: "GitHub"
     },
     {
       icon: Linkedin,
-      href: "https://linkedin.com",
+      href: "https://linkedin.com/in/roksana00mymensingh/",
       label: "LinkedIn"
     },
     {
@@ -128,7 +128,9 @@ const Footer = () => {
           
           <div className="flex items-center space-x-2 text-sm text-muted-foreground">
             <span>Built with</span>
-            <Heart className="w-4 h-4 text-red-500 fill-current" />
+            <div className="w-4 h-4 rounded-full bg-gradient-to-r from-ai-blue to-ai-purple flex items-center justify-center">
+              <Heart className="w-3 h-3 text-white fill-current" />
+            </div>
             <span>using React & AI</span>
           </div>
 

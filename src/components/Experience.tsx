@@ -1,65 +1,34 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, MapPin } from "lucide-react";
+import { Calendar, MapPin, Award, GraduationCap, Briefcase, Certificate } from "lucide-react";
 
 const Experience = () => {
   const experiences = [
     {
-      title: "Senior AI/ML Engineer",
-      company: "TechCorp Solutions",
-      location: "Remote",
-      period: "2022 - Present",
+      title: "AI/ML Engineer",
+      company: "Betopia Group",
+      location: "Mohakhali, Dhaka",
+      period: "March 2025 - Present",
       description: [
-        "Led development of computer vision models for automated quality control, improving accuracy by 35%",
-        "Implemented MLOps pipelines using Kubernetes and Docker for seamless model deployment",
-        "Collaborated with cross-functional teams to deliver AI solutions serving 1M+ users daily",
-        "Mentored junior engineers and conducted technical workshops on deep learning"
+        "Working on cutting-edge AI/ML projects as part of the innovative team",
+        "Developing intelligent solutions for business automation and optimization",
+        "Collaborating with cross-functional teams to deliver impactful AI solutions",
+        "Contributing to the advancement of AI technologies in real-world applications"
       ],
-      technologies: ["Python", "TensorFlow", "Kubernetes", "AWS", "Docker"]
-    },
-    {
-      title: "Machine Learning Engineer",
-      company: "DataVision AI",
-      location: "New York, NY",
-      period: "2020 - 2022",
-      description: [
-        "Developed NLP models for sentiment analysis and text classification with 92% accuracy",
-        "Built recommendation systems using collaborative filtering and deep learning",
-        "Optimized model inference time by 40% through quantization and pruning techniques",
-        "Created data preprocessing pipelines handling 10TB+ of daily data"
-      ],
-      technologies: ["PyTorch", "Scikit-learn", "Apache Spark", "MongoDB", "GCP"]
-    },
-    {
-      title: "Data Scientist",
-      company: "Analytics Pro",
-      location: "San Francisco, CA",
-      period: "2019 - 2020",
-      description: [
-        "Analyzed large datasets to identify business insights and growth opportunities",
-        "Developed predictive models for customer churn reduction, saving $2M annually",
-        "Created interactive dashboards and visualizations for stakeholder reporting",
-        "Conducted A/B testing and statistical analysis for product optimization"
-      ],
-      technologies: ["Python", "R", "SQL", "Tableau", "Pandas"]
+      technologies: ["Python", "Machine Learning", "AI", "Data Science", "Deep Learning"],
+      note: "Sister concern of Softvence Agency"
     }
   ];
 
   const education = [
     {
-      degree: "Master of Science in Computer Science",
+      degree: "Bachelor of Science in Computer Science and Engineering",
       specialization: "Machine Learning & AI",
-      institution: "Stanford University",
-      period: "2017 - 2019",
-      achievements: ["Thesis on Deep Reinforcement Learning", "GPA: 3.9/4.0"]
+      institution: "Gopalganj Science and Technology University",
+      period: "2019-2024",
+      achievements: ["Project Title: Mock Test AI FeedBack Generator", "GPA: 3.25/4.0"]
     },
-    {
-      degree: "Bachelor of Science in Computer Engineering",
-      specialization: "Software Development",
-      institution: "MIT",
-      period: "2013 - 2017",
-      achievements: ["Magna Cum Laude", "President, AI Club"]
-    }
+ 
   ];
 
   return (
@@ -78,7 +47,7 @@ const Experience = () => {
           {/* Experience Section */}
           <div>
             <h3 className="text-2xl font-bold mb-8 flex items-center text-foreground">
-              <span className="w-6 h-6 rounded-full gradient-primary mr-3"></span>
+              <Briefcase className="w-6 h-6 mr-3 text-ai-blue" />
               Professional Experience
             </h3>
             <div className="space-y-6">
@@ -88,6 +57,11 @@ const Experience = () => {
                     <CardTitle className="text-xl font-bold text-foreground">{exp.title}</CardTitle>
                     <div className="space-y-2">
                       <div className="text-lg font-semibold text-ai-blue">{exp.company}</div>
+                      {exp.note && (
+                        <div className="text-sm text-ai-purple font-medium italic">
+                          {exp.note}
+                        </div>
+                      )}
                       <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-sm text-muted-foreground">
                         <div className="flex items-center">
                           <Calendar className="w-4 h-4 mr-1" />
@@ -125,7 +99,7 @@ const Experience = () => {
           {/* Education Section */}
           <div>
             <h3 className="text-2xl font-bold mb-8 flex items-center text-foreground">
-              <span className="w-6 h-6 rounded-full gradient-primary mr-3"></span>
+              <GraduationCap className="w-6 h-6 mr-3 text-ai-purple" />
               Education
             </h3>
             <div className="space-y-6">
@@ -143,7 +117,7 @@ const Experience = () => {
                       <ul className="space-y-1">
                         {edu.achievements.map((achievement, idx) => (
                           <li key={idx} className="text-muted-foreground flex items-start">
-                            <span className="w-2 h-2 rounded-full bg-ai-purple mt-2 mr-3 flex-shrink-0"></span>
+                            <Award className="w-4 h-4 text-ai-purple mt-1 mr-3 flex-shrink-0" />
                             {achievement}
                           </li>
                         ))}
@@ -161,16 +135,12 @@ const Experience = () => {
                 <CardContent>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <span className="text-foreground">AWS Certified Machine Learning</span>
-                      <Badge variant="outline">2023</Badge>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-foreground">TensorFlow Developer Certificate</span>
-                      <Badge variant="outline">2022</Badge>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-foreground">Google Cloud ML Engineer</span>
-                      <Badge variant="outline">2022</Badge>
+                      <div>
+                        <span className="text-foreground font-medium">Data Analysis with Python</span>
+                        <div className="text-sm text-muted-foreground">EDGE Digital Skills for Students</div>
+                        <div className="text-xs text-ai-purple">BSMRSTU_EDGE</div>
+                      </div>
+                      <Badge variant="outline">2024</Badge>
                     </div>
                   </div>
                 </CardContent>

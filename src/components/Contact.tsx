@@ -56,8 +56,8 @@ const Contact = () => {
     {
       icon: Phone,
       label: "Phone",
-      value: "+1 (555) 123-4567",
-      link: "tel:+15551234567"
+      value: "+8801975300123",
+      link: "tel:+8801975300123"
     },
     {
       icon: MapPin,
@@ -71,13 +71,13 @@ const Contact = () => {
     {
       icon: Github,
       label: "GitHub",
-      link: "https://github.com",
+      link: "https://github.com/Roksana18cse04",
       color: "hover:text-ai-blue"
     },
     {
       icon: Linkedin,
       label: "LinkedIn", 
-      link: "https://linkedin.com",
+      link: "https://linkedin.com/in/roksana00mymensingh/",
       color: "hover:text-ai-blue"
     },
     {

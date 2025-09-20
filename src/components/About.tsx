@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Brain, Code, Lightbulb, Target } from "lucide-react";
+import { Brain, Code, Lightbulb, Target, Linkedin, Github, Phone } from "lucide-react";
 import aiTechImage from "@/assets/ai-tech.jpg";
 
 const About = () => {
@@ -88,15 +88,44 @@ const About = () => {
                 <div className="text-sm text-muted-foreground">Projects Completed</div>
               </div>
             </div>
+
+            {/* Contact Information */}
+            <div className="space-y-4">
+              <h4 className="text-lg font-semibold text-foreground">Get in Touch</h4>
+              <div className="space-y-3">
+                <a 
+                  href="https://www.linkedin.com/in/roksana00mymensingh/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-muted-foreground hover:text-ai-blue transition-colors"
+                >
+                  <Linkedin className="h-5 w-5" />
+                  <span>LinkedIn Profile</span>
+                </a>
+                <a 
+                  href="https://github.com/Roksana18cse04" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-muted-foreground hover:text-ai-purple transition-colors"
+                >
+                  <Github className="h-5 w-5" />
+                  <span>GitHub Profile</span>
+                </a>
+                <div className="flex items-center gap-3 text-muted-foreground">
+                  <Phone className="h-5 w-5" />
+                  <span>+8801975300123</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
         {/* Highlights Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
           {highlights.map((item, index) => (
-            <Card key={index} className="shadow-card hover:shadow-glow transition-bounce group">
+            <Card key={index} className="shadow-card hover:shadow-glow transition-bounce group rounded-3xl">
               <CardContent className="p-6 text-center">
-                <div className="w-12 h-12 mx-auto mb-4 rounded-lg gradient-primary flex items-center justify-center group-hover:scale-110 transition-bounce">
+                <div className="w-12 h-12 mx-auto mb-4 rounded-full gradient-primary flex items-center justify-center group-hover:scale-110 transition-bounce">
                   <item.icon className="h-6 w-6 text-white" />
                 </div>
                 <h4 className="font-semibold mb-2 text-foreground">{item.title}</h4>

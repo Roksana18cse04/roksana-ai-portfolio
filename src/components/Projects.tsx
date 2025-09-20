@@ -8,96 +8,57 @@ const Projects = () => {
   const [setRef, isInView] = useInView(0.1);
   const projects = [
     {
-      title: "Neural Style Transfer App",
-      description: "Real-time artistic style transfer using deep neural networks. Allows users to transform photos into artwork using famous painting styles.",
+      title: "AI Mock Interview Generator and Preparation",
+      description: "AI Mock Interview Generator and Preparation is a platform that allows users to generate mock interviews and prepare for them.",
       image: "🎨",
-      technologies: ["Python", "TensorFlow", "OpenCV", "Flask", "React"],
+      technologies: ["Python", "TensorFlow", "OpenCV", "Flask", "React", "Mediapipe"],
       features: [
-        "Real-time style transfer processing",
-        "Multiple artistic styles available", 
-        "High-resolution output support",
-        "User-friendly web interface"
+        "Automated AI-driven mock interview generation with customizable difficulty levels",
+        "Real-time body language detection using computer vision with actionable feedback",
+        "Tone of voice and speech delivery analysis with AI-generated improvement tips",
+        "Personalized interview feedback with scoring metrics and progress tracking",
+        "User-friendly web interface built with React for seamless interaction",
+        "Scalable Flask-based backend with TensorFlow models for NLP & CV tasks"
       ],
-      github: "#",
-      demo: "#",
+      github: "https://github.com/Roksana18cse04/Inprep-AI",
+      demo: "https://www.inprep.ai/signup",
       status: "Production"
     },
     {
-      title: "Intelligent Document Analyzer",
-      description: "AI-powered system for extracting and analyzing information from documents using OCR and NLP techniques.",
-      image: "📄", 
-      technologies: ["Python", "PyTorch", "NLTK", "Tesseract", "FastAPI"],
+      title: "MultiAgent Chatbot",
+      description: "MultiAgent Chatbot is a platform that allows users to chat with multiple agents.",
+      image: "🤖", 
+      technologies: ["Python", "PyTorch", "NLTK", "Tesseract", "FastAPI", "RAG", "LLM"],
       features: [
-        "Multi-language OCR support",
-        "Entity recognition and extraction",
-        "Document classification",
-        "Confidence scoring system"
+        "Multi-agent conversational AI system with role-based expertise",
+        "Integrated image editing and generation powered by LLM + vision models",
+        "E-commerce & media integration: add, manage, and sell products directly",
+        "Advanced Q&A system leveraging retrieval-augmented generation (RAG)",
+        "Automatic captioning, content summarization, and post generation for social platforms",
+        "FastAPI backend with scalable LLM orchestration pipeline"
       ],
-      github: "#",
-      demo: "#",
+      github: "https://github.com/Roksana18cse04/HarmoniAI",
+      demo: "",
       status: "Development"
     },
     {
-      title: "Predictive Sales Analytics",
-      description: "Machine learning platform for sales forecasting and customer behavior analysis with interactive dashboards.",
-      image: "📊",
-      technologies: ["Python", "Scikit-learn", "Plotly", "PostgreSQL", "Docker"],
-      features: [
-        "Time series forecasting",
-        "Customer segmentation",
-        "Interactive visualizations",
-        "Automated reporting"
-      ],
-      github: "#",
-      demo: "#",
-      status: "Production"
-    },
-    {
-      title: "Computer Vision Quality Control",
-      description: "Automated quality inspection system for manufacturing using computer vision and deep learning models.",
+      title: "Hair Color Shade Matching",
+      description: "Hair Color shade matching is a platform that allows users to match hair color shade.",
       image: "🔍",
-      technologies: ["Python", "OpenCV", "YOLOv8", "TensorRT", "ROS"],
+      technologies: ["Python", "OpenCV", "YOLOv8", "TensorRT", "ROS", "ResNet", "K-Means"],
       features: [
-        "Real-time defect detection",
-        "High accuracy classification",
-        "Edge deployment ready",
-        "Production line integration"
+        "AI-powered hair shade detection and closest product match using ΔE LAB color distance",
+        "Dynamic real-time shade matching with YOLOv8 and OpenCV pipelines",
+        "ResNet-based feature extraction for fine-grained color classification",
+        "K-Means clustering to segment and map dominant hair colors",
+        "Optimized inference with TensorRT for low-latency edge deployment",
+        "ROS-based modular integration for robotics and real-time applications"
       ],
-      github: "#",
-      demo: "#",
+      github: "https://github.com/Roksana18cse04/Hair_Extension",
+      demo: "https://advancewhite.netlify.app/uploadphoto",
       status: "Production"
     },
-    {
-      title: "Chatbot with NLP",
-      description: "Intelligent conversational AI system with context understanding and multi-turn dialogue capabilities.",
-      image: "🤖",
-      technologies: ["Python", "Transformers", "BERT", "Django", "WebSocket"],
-      features: [
-        "Context-aware responses",
-        "Multi-language support",
-        "Sentiment analysis",
-        "Integration APIs"
-      ],
-      github: "#",
-      demo: "#",
-      status: "Production"
-    },
-    {
-      title: "Anomaly Detection System",
-      description: "Real-time anomaly detection for IoT sensor data using unsupervised learning and statistical methods.",
-      image: "⚠️",
-      technologies: ["Python", "TensorFlow", "Apache Kafka", "InfluxDB", "Grafana"],
-      features: [
-        "Real-time monitoring",
-        "Adaptive thresholds",
-        "Alert notifications",
-        "Historical analysis"
-      ],
-      github: "#",
-      demo: "#",
-      status: "Development"
-    }
-  ];
+    ];    
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -200,10 +161,20 @@ const Projects = () => {
                 I'm always open to discussing new projects, innovative ideas, 
                 and opportunities to create impactful AI solutions.
               </p>
-              <Button className="gradient-primary text-white hover:shadow-glow hover:scale-110 transition-all duration-300 group">
-                <ExternalLink className="w-4 h-4 mr-2 group-hover:animate-bounce" />
-                View All Projects
-              </Button>
+              <div className="flex gap-4 justify-center">
+                <Button className="gradient-primary text-white hover:shadow-glow hover:scale-110 transition-all duration-300 group" asChild>
+                  <a href="https://github.com/Roksana18cse04" target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="w-4 h-4 mr-2 group-hover:animate-bounce" />
+                    View All Projects
+                  </a>
+                </Button>
+                <Button variant="outline" className="hover:shadow-glow hover:scale-110 transition-all duration-300 group" asChild>
+                  <a href="https://docs.google.com/document/d/1KyowXvngxtBpmJ0JyS6rtfE_BEGegI5PTBRwr15Exp8/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="w-4 h-4 mr-2 group-hover:animate-bounce" />
+                    View Documentation
+                  </a>
+                </Button>
+              </div>
             </CardContent>
           </Card>
         </div>
