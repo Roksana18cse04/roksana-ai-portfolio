@@ -24,11 +24,11 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border animate-slide-up">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <span className="text-xl font-bold gradient-primary bg-clip-text text-transparent">
+            <span className="text-xl font-bold gradient-primary bg-clip-text text-transparent hover:scale-110 transition-transform duration-300 cursor-pointer">
               Roksana.dev
             </span>
           </div>
@@ -40,9 +40,10 @@ const Navigation = () => {
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="text-muted-foreground hover:text-primary transition-smooth px-3 py-2 rounded-md text-sm font-medium hover:bg-secondary"
+                  className="text-muted-foreground hover:text-primary hover:scale-105 transition-all duration-300 px-3 py-2 rounded-md text-sm font-medium hover:bg-secondary relative overflow-hidden group"
                 >
-                  {item.name}
+                  <span className="relative z-10">{item.name}</span>
+                  <span className="absolute inset-0 bg-gradient-to-r from-ai-blue/10 to-ai-purple/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
                 </button>
               ))}
             </div>

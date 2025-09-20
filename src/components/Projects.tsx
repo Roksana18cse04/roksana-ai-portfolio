@@ -2,8 +2,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Github, Play } from "lucide-react";
+import { useInView } from "@/hooks/useAnimations";
 
 const Projects = () => {
+  const [setRef, isInView] = useInView(0.1);
   const projects = [
     {
       title: "Neural Style Transfer App",
@@ -109,9 +111,9 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-20">
+    <section id="projects" className="py-20" ref={setRef}>
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <div className={`text-center mb-16 ${isInView ? 'animate-fade-in-up' : 'opacity-0'}`}>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             <span className="gradient-primary bg-clip-text text-transparent">Featured Projects</span>
           </h2>
@@ -122,15 +124,21 @@ const Projects = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <Card key={index} className="shadow-card hover:shadow-glow transition-bounce group h-full flex flex-col">
+            <Card 
+              key={index} 
+              className={`shadow-card hover:shadow-glow hover:scale-105 hover:-translate-y-2 transition-all duration-500 group h-full flex flex-col ${
+                isInView ? 'animate-fade-in-up' : 'opacity-0'
+              }`}
+              style={{ animationDelay: `${index * 150}ms` }}
+            >
               <CardHeader className="pb-4">
                 <div className="flex items-start justify-between mb-4">
-                  <div className="text-4xl">{project.image}</div>
-                  <Badge className={getStatusColor(project.status)}>
+                  <div className="text-4xl group-hover:scale-110 transition-transform duration-300">{project.image}</div>
+                  <Badge className={`${getStatusColor(project.status)} animate-pulse`}>
                     {project.status}
                   </Badge>
                 </div>
-                <CardTitle className="text-xl font-bold text-foreground group-hover:text-ai-blue transition-smooth">
+                <CardTitle className="text-xl font-bold text-foreground group-hover:text-ai-blue transition-colors duration-300">
                   {project.title}
                 </CardTitle>
               </CardHeader>
@@ -163,15 +171,15 @@ const Projects = () => {
                 </div>
 
                 <div className="flex gap-3 mt-auto">
-                  <Button size="sm" variant="outline" className="flex-1" asChild>
+                  <Button size="sm" variant="outline" className="flex-1 hover:scale-105 transition-all duration-300 group" asChild>
                     <a href={project.github} target="_blank" rel="noopener noreferrer">
-                      <Github className="w-4 h-4 mr-2" />
+                      <Github className="w-4 h-4 mr-2 group-hover:animate-spin" />
                       Code
                     </a>
                   </Button>
-                  <Button size="sm" className="flex-1 gradient-primary text-white" asChild>
+                  <Button size="sm" className="flex-1 gradient-primary text-white hover:shadow-glow hover:scale-105 transition-all duration-300 group" asChild>
                     <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                      <Play className="w-4 h-4 mr-2" />
+                      <Play className="w-4 h-4 mr-2 group-hover:animate-bounce" />
                       Demo
                     </a>
                   </Button>
@@ -182,8 +190,8 @@ const Projects = () => {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center mt-16">
-          <Card className="max-w-2xl mx-auto shadow-card">
+        <div className={`text-center mt-16 ${isInView ? 'animate-scale-in' : 'opacity-0'}`} style={{ animationDelay: '1s' }}>
+          <Card className="max-w-2xl mx-auto shadow-card hover:shadow-glow hover:scale-105 transition-all duration-500">
             <CardContent className="p-8">
               <h3 className="text-2xl font-bold mb-4 text-foreground">
                 Interested in Collaboration?
@@ -192,8 +200,8 @@ const Projects = () => {
                 I'm always open to discussing new projects, innovative ideas, 
                 and opportunities to create impactful AI solutions.
               </p>
-              <Button className="gradient-primary text-white hover:shadow-glow transition-bounce">
-                <ExternalLink className="w-4 h-4 mr-2" />
+              <Button className="gradient-primary text-white hover:shadow-glow hover:scale-110 transition-all duration-300 group">
+                <ExternalLink className="w-4 h-4 mr-2 group-hover:animate-bounce" />
                 View All Projects
               </Button>
             </CardContent>
