@@ -80,7 +80,7 @@ const Hero = () => {
               className="border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:scale-105 transition-all duration-300 group"
               asChild
             >
-              <a href="/Roksana_Akter_RESUME.pdf" download="Roksana_Akter_RESUME.pdf">
+              <a href="/Roksana_Resume.pdf" download="Roksana_Resume.pdf">
                 <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
                 Download CV
               </a>
