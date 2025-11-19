@@ -69,6 +69,9 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      backgroundSize: {
+        "300%": "300%",
+      },
       keyframes: {
         "accordion-down": {
           from: {
@@ -191,6 +194,17 @@ export default {
           "51%, 100%": {
             borderColor: "hsl(var(--primary))"
           }
+        },
+        "gradient": {
+          "0%": {
+            backgroundPosition: "0% 50%"
+          },
+          "50%": {
+            backgroundPosition: "100% 50%"
+          },
+          "100%": {
+            backgroundPosition: "0% 50%"
+          }
         }
       },
       animation: {
@@ -207,6 +221,7 @@ export default {
         "float": "float 3s ease-in-out infinite",
         "typing": "typing 3.5s steps(40, end)",
         "blink": "blink 1s infinite",
+        "gradient": "gradient 3s ease infinite",
       },
     },
   },

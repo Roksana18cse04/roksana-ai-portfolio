@@ -1,42 +1,16 @@
-import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
+import { Brain, Code, Boxes, Wrench } from "lucide-react";
+import { motion } from "framer-motion";
 import { useInView } from "@/hooks/useAnimations";
 
 const Skills = () => {
   const [setRef, isInView] = useInView(0.2);
-  const [animatedSkills, setAnimatedSkills] = useState<{[key: string]: number}>({});
-
-  useEffect(() => {
-    if (isInView) {
-      const timer = setTimeout(() => {
-        setAnimatedSkills({
-          "Deep Learning": 95,
-          "Neural Networks": 90,
-          "Computer Vision": 85,
-          "Natural Language Processing": 88,
-          "Python": 95,
-          "JavaScript/TypeScript": 85,
-          "R": 80,
-          "SQL": 90,
-          "TensorFlow": 92,
-          "PyTorch": 88,
-          "Scikit-learn": 95,
-          "Keras": 90,
-          "Docker": 85,
-          "Kubernetes": 75,
-          "AWS/GCP": 80,
-          "MLOps": 82,
-        });
-      }, 300);
-      return () => clearTimeout(timer);
-    }
-  }, [isInView]);
 
   const skillCategories = [
     {
       title: "Machine Learning & AI",
+      icon: Brain,
       skills: [
         { name: "Deep Learning", level: 95 },
         { name: "Neural Networks", level: 90 },
@@ -46,6 +20,7 @@ const Skills = () => {
     },
     {
       title: "Programming Languages",
+      icon: Code,
       skills: [
         { name: "Python", level: 95 },
         { name: "JavaScript/TypeScript", level: 85 },
@@ -55,6 +30,7 @@ const Skills = () => {
     },
     {
       title: "Frameworks & Libraries",
+      icon: Boxes,
       skills: [
         { name: "TensorFlow", level: 92 },
         { name: "PyTorch", level: 88 },
@@ -64,6 +40,7 @@ const Skills = () => {
     },
     {
       title: "Tools & Technologies",
+      icon: Wrench,
       skills: [
         { name: "Docker", level: 85 },
         { name: "Kubernetes", level: 75 },
@@ -80,102 +57,138 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-20" ref={setRef}>
-      <div className="container mx-auto px-4">
-        <div className={`text-center mb-16 ${isInView ? 'animate-fade-in-up' : 'opacity-0'}`}>
+    <section id="skills" className="py-20 relative overflow-hidden" ref={setRef}>
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-ai-blue/10 rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-ai-purple/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }} />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="gradient-primary bg-clip-text text-transparent">Skills & Expertise</span>
+            <span className="bg-gradient-to-r from-ai-blue via-ai-purple to-ai-cyan bg-clip-text text-transparent">
+              Skills & Expertise
+            </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             A comprehensive toolkit for building intelligent systems and scalable AI solutions
           </p>
-        </div>
+        </motion.div>
 
-        {/* Skills Progress Bars */}
+        {/* Skills Progress Bars with enhanced animations */}
         <div className="grid md:grid-cols-2 gap-8 mb-16">
           {skillCategories.map((category, categoryIndex) => (
-            <Card 
-              key={categoryIndex} 
-              className={`shadow-card hover:shadow-glow hover:scale-105 transition-all duration-500 ${
-                isInView ? `animate-fade-in-left` : 'opacity-0'
-              }`}
-              style={{ animationDelay: `${categoryIndex * 200}ms` }}
+            <motion.div
+              key={categoryIndex}
+              initial={{ opacity: 0, x: categoryIndex % 2 === 0 ? -50 : 50 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ delay: categoryIndex * 0.2, duration: 0.8 }}
             >
-              <CardHeader>
-                <CardTitle className="text-xl font-bold text-foreground flex items-center">
-                  <span className="w-3 h-3 rounded-full gradient-primary mr-3 animate-pulse"></span>
-                  {category.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {category.skills.map((skill, skillIndex) => (
-                  <div key={skillIndex} className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm font-medium text-foreground">{skill.name}</span>
-                      <span className="text-sm text-muted-foreground">
-                        {isInView ? (animatedSkills[skill.name] || 0) : 0}%
-                      </span>
-                    </div>
-                    <Progress 
-                      value={isInView ? (animatedSkills[skill.name] || 0) : 0} 
-                      className="h-2 overflow-hidden"
-                    />
-                  </div>
+              <Card className="shadow-card hover:shadow-glow transition-all duration-500 group relative overflow-hidden border-2 border-transparent hover:border-ai-blue/30">
+                {/* Animated gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-ai-blue/5 via-ai-purple/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                
+                <CardHeader className="relative">
+                  <CardTitle className="text-xl font-bold flex items-center gap-3">
+                    <motion.div
+                      className="p-3 rounded-lg bg-gradient-to-br from-ai-blue/20 to-ai-purple/20 group-hover:from-ai-blue/40 group-hover:to-ai-purple/40 transition-all"
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                    >
+                      <category.icon className="w-6 h-6 text-ai-blue" />
+                    </motion.div>
+                    <span className="group-hover:text-ai-blue transition-colors">{category.title}</span>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4 relative">
+                  {category.skills.map((skill, skillIndex) => (
+                    <motion.div
+                      key={skillIndex}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={isInView ? { opacity: 1, x: 0 } : {}}
+                      transition={{ delay: categoryIndex * 0.2 + skillIndex * 0.1 }}
+                      className="space-y-2"
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="font-medium group-hover:text-ai-blue transition-colors">{skill.name}</span>
+                        <span className="text-sm text-muted-foreground group-hover:text-ai-purple transition-colors font-semibold">
+                          {skill.level}%
+                        </span>
+                      </div>
+                      <div className="w-full bg-secondary/50 rounded-full h-3 overflow-hidden shadow-inner">
+                        <motion.div
+                          className="h-full relative overflow-hidden rounded-full"
+                          style={{
+                            background: 'linear-gradient(90deg, hsl(var(--ai-blue)), hsl(var(--ai-purple)))',
+                          }}
+                          initial={{ width: 0 }}
+                          animate={isInView ? { width: `${skill.level}%` } : {}}
+                          transition={{ 
+                            delay: categoryIndex * 0.2 + skillIndex * 0.1 + 0.2, 
+                            duration: 1, 
+                            ease: "easeOut" 
+                          }}
+                        >
+                          {/* Shimmer effect */}
+                          <motion.div
+                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                            animate={{ x: ['-100%', '200%'] }}
+                            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                          />
+                        </motion.div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Technologies Cloud with enhanced styling */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.8, duration: 0.8 }}
+        >
+          <Card className="shadow-card relative overflow-hidden border-2 border-transparent hover:border-ai-purple/30 transition-all">
+            {/* Animated background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-ai-blue/5 via-transparent to-ai-purple/5" />
+            
+            <CardHeader className="relative">
+              <CardTitle className="text-2xl font-bold text-center">
+                <span className="bg-gradient-to-r from-ai-cyan via-ai-blue to-ai-purple bg-clip-text text-transparent">
+                  Technologies & Tools
+                </span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="relative">
+              <div className="flex flex-wrap justify-center gap-3">
+                {technologies.map((tech, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ delay: 0.8 + index * 0.05, duration: 0.3 }}
+                    whileHover={{ scale: 1.1, y: -5 }}
+                  >
+                    <Badge 
+                      variant="secondary" 
+                      className="px-4 py-2 text-sm font-medium cursor-default transition-all hover:bg-gradient-to-r hover:from-ai-blue/20 hover:to-ai-purple/20 hover:border-ai-blue/50 hover:shadow-glow"
+                    >
+                      {tech}
+                    </Badge>
+                  </motion.div>
                 ))}
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* Technologies Badge Cloud */}
-        <Card className={`shadow-card hover:shadow-glow transition-all duration-500 ${isInView ? 'animate-scale-in' : 'opacity-0'}`} style={{ animationDelay: '800ms' }}>
-          <CardHeader>
-            <CardTitle className="text-2xl font-bold text-center text-foreground">
-              Technologies & Tools
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex flex-wrap gap-3 justify-center">
-              {technologies.map((tech, index) => (
-                <Badge 
-                  key={index} 
-                  variant="secondary" 
-                  className={`px-4 py-2 text-sm hover:bg-primary hover:text-primary-foreground hover:scale-110 transition-all duration-300 cursor-default ${
-                    isInView ? 'animate-bounce-in' : 'opacity-0'
-                  }`}
-                  style={{ animationDelay: `${1000 + index * 50}ms` }}
-                >
-                  {tech}
-                </Badge>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Expertise Areas */}
-        <div className="grid md:grid-cols-3 gap-6 mt-16">
-          {[
-            { emoji: "🧠", title: "Deep Learning", description: "Advanced neural architectures, CNNs, RNNs, and Transformers" },
-            { emoji: "📊", title: "Data Science", description: "Statistical analysis, data mining, and predictive modeling" },
-            { emoji: "⚙️", title: "MLOps", description: "Model deployment, monitoring, and production pipelines" }
-          ].map((item, index) => (
-            <Card 
-              key={index} 
-              className={`text-center shadow-card hover:shadow-glow hover:scale-105 hover:-translate-y-2 transition-all duration-500 group ${
-                isInView ? 'animate-fade-in-up' : 'opacity-0'
-              }`}
-              style={{ animationDelay: `${1500 + index * 200}ms` }}
-            >
-              <CardContent className="p-8">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full gradient-primary flex items-center justify-center group-hover:scale-110 group-hover:animate-bounce transition-all duration-300">
-                  <span className="text-2xl">{item.emoji}</span>
-                </div>
-                <h3 className="text-xl font-bold mb-2 text-foreground group-hover:text-ai-blue transition-colors duration-300">{item.title}</h3>
-                <p className="text-muted-foreground">{item.description}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
       </div>
     </section>
   );
