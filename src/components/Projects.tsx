@@ -1,16 +1,18 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, Github, Play } from "lucide-react";
+import { ExternalLink, Github, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
 import { useInView } from "@/hooks/useAnimations";
 
 const Projects = () => {
   const [setRef, isInView] = useInView(0.1);
+  
   const projects = [
     {
       title: "AI Mock Interview Generator and Preparation",
       description: "AI Mock Interview Generator and Preparation is a platform that allows users to generate mock interviews and prepare for them.",
-      image: "🎨",
+      emoji: "🎨",
       technologies: ["Python", "TensorFlow", "OpenCV", "Flask", "React", "Mediapipe"],
       features: [
         "Automated AI-driven mock interview generation with customizable difficulty levels",
@@ -27,7 +29,7 @@ const Projects = () => {
     {
       title: "MultiAgent Chatbot",
       description: "MultiAgent Chatbot is a platform that allows users to chat with multiple agents.",
-      image: "🤖", 
+      emoji: "🤖", 
       technologies: ["Python", "PyTorch", "NLTK", "Tesseract", "FastAPI", "RAG", "LLM"],
       features: [
         "Multi-agent conversational AI system with role-based expertise",
@@ -44,7 +46,7 @@ const Projects = () => {
     {
       title: "Hair Color Shade Matching",
       description: "Hair Color shade matching is a platform that allows users to match hair color shade.",
-      image: "🔍",
+      emoji: "🔍",
       technologies: ["Python", "OpenCV", "YOLOv8", "TensorRT", "ROS", "ResNet", "K-Means"],
       features: [
         "AI-powered hair shade detection and closest product match using ΔE LAB color distance",
@@ -58,125 +60,140 @@ const Projects = () => {
       demo: "https://advancewhite.netlify.app/uploadphoto",
       status: "Production"
     },
-    ];    
+  ];    
 
   const getStatusColor = (status: string) => {
     switch (status) {
       case "Production":
-        return "bg-ai-green text-white";
+        return "bg-ai-green/20 text-ai-green border-ai-green/50";
       case "Development":
-        return "bg-ai-blue text-white";
+        return "bg-ai-blue/20 text-ai-blue border-ai-blue/50";
       default:
-        return "bg-muted text-muted-foreground";
+        return "bg-muted/20 text-muted-foreground border-muted";
     }
   };
 
   return (
-    <section id="projects" className="py-20" ref={setRef}>
-      <div className="container mx-auto px-4">
-        <div className={`text-center mb-16 ${isInView ? 'animate-fade-in-up' : 'opacity-0'}`}>
+    <section id="projects" className="py-20 relative overflow-hidden bg-secondary/30" ref={setRef}>
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-40 right-20 w-96 h-96 bg-ai-cyan/10 rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-40 left-20 w-80 h-80 bg-ai-purple/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="gradient-primary bg-clip-text text-transparent">Featured Projects</span>
+            <span className="bg-gradient-to-r from-ai-cyan via-ai-blue to-ai-purple bg-clip-text text-transparent">
+              Featured Projects
+            </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Showcasing innovative AI/ML solutions that solve real-world problems and drive business value
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <Card 
-              key={index} 
-              className={`shadow-card hover:shadow-glow hover:scale-105 hover:-translate-y-2 transition-all duration-500 group h-full flex flex-col ${
-                isInView ? 'animate-fade-in-up' : 'opacity-0'
-              }`}
-              style={{ animationDelay: `${index * 150}ms` }}
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 50, rotateX: -10 }}
+              animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
+              transition={{ delay: index * 0.2, duration: 0.8 }}
+              className="group perspective-1000"
             >
-              <CardHeader className="pb-4">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="text-4xl group-hover:scale-110 transition-transform duration-300">{project.image}</div>
-                  <Badge className={`${getStatusColor(project.status)} animate-pulse`}>
-                    {project.status}
-                  </Badge>
-                </div>
-                <CardTitle className="text-xl font-bold text-foreground group-hover:text-ai-blue transition-colors duration-300">
-                  {project.title}
-                </CardTitle>
-              </CardHeader>
-              
-              <CardContent className="flex-1 flex flex-col">
-                <p className="text-muted-foreground mb-4 leading-relaxed">
-                  {project.description}
-                </p>
+              <Card className="h-full shadow-card hover:shadow-neon transition-all duration-500 hover:-translate-y-4 relative overflow-hidden border-2 border-transparent hover:border-ai-cyan/50 group-hover:scale-[1.02]">
+                {/* Animated gradient border effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-ai-blue via-ai-purple to-ai-cyan opacity-0 group-hover:opacity-10 transition-opacity blur-2xl" />
+                
+                {/* Sparkle effect on hover */}
+                <motion.div
+                  className="absolute top-4 right-4 opacity-0 group-hover:opacity-100"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                >
+                  <Sparkles className="w-6 h-6 text-ai-cyan" />
+                </motion.div>
 
-                <div className="mb-4">
-                  <h4 className="font-semibold mb-2 text-foreground">Key Features:</h4>
-                  <ul className="space-y-1">
-                    {project.features.map((feature, idx) => (
-                      <li key={idx} className="text-sm text-muted-foreground flex items-start">
-                        <span className="w-1.5 h-1.5 rounded-full bg-ai-blue mt-2 mr-2 flex-shrink-0"></span>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <CardHeader className="relative">
+                  <div className="flex items-center justify-between mb-4">
+                    <motion.div 
+                      className="text-5xl filter drop-shadow-lg"
+                      whileHover={{ scale: 1.2, rotate: 10 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      {project.emoji}
+                    </motion.div>
+                    <Badge 
+                      variant="outline" 
+                      className={`text-xs font-semibold border-2 ${getStatusColor(project.status)}`}
+                    >
+                      {project.status}
+                    </Badge>
+                  </div>
+                  <CardTitle className="text-xl font-bold group-hover:text-ai-cyan transition-colors">
+                    {project.title}
+                  </CardTitle>
+                </CardHeader>
 
-                <div className="mb-6">
+                <CardContent className="relative space-y-4">
+                  <p className="text-muted-foreground group-hover:text-foreground/90 transition-colors leading-relaxed">
+                    {project.description}
+                  </p>
+                  
                   <div className="flex flex-wrap gap-2">
                     {project.technologies.map((tech, idx) => (
-                      <Badge key={idx} variant="outline" className="text-xs">
-                        {tech}
-                      </Badge>
+                      <motion.div
+                        key={idx}
+                        whileHover={{ scale: 1.1, y: -2 }}
+                      >
+                        <Badge 
+                          variant="secondary" 
+                          className="text-xs font-medium hover:bg-gradient-to-r hover:from-ai-blue/20 hover:to-ai-purple/20 hover:border-ai-cyan/50 transition-all cursor-default"
+                        >
+                          {tech}
+                        </Badge>
+                      </motion.div>
                     ))}
                   </div>
-                </div>
 
-                <div className="flex gap-3 mt-auto">
-                  <Button size="sm" variant="outline" className="flex-1 hover:scale-105 transition-all duration-300 group" asChild>
-                    <a href={project.github} target="_blank" rel="noopener noreferrer">
-                      <Github className="w-4 h-4 mr-2 group-hover:animate-spin" />
-                      Code
-                    </a>
-                  </Button>
-                  <Button size="sm" className="flex-1 gradient-primary text-white hover:shadow-glow hover:scale-105 transition-all duration-300 group" asChild>
-                    <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                      <Play className="w-4 h-4 mr-2 group-hover:animate-bounce" />
-                      Demo
-                    </a>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+                  <div className="flex gap-2 pt-2">
+                    <Button 
+                      asChild 
+                      size="sm" 
+                      variant="outline" 
+                      className="flex-1 border-ai-cyan/50 hover:border-ai-cyan hover:bg-ai-cyan/10 transition-all group/btn"
+                    >
+                      <a href={project.github} target="_blank" rel="noopener noreferrer">
+                        <Github className="w-4 h-4 mr-2 group-hover/btn:rotate-12 transition-transform" />
+                        Code
+                      </a>
+                    </Button>
+                    {project.demo && (
+                      <Button 
+                        asChild 
+                        size="sm" 
+                        className="flex-1 bg-gradient-to-r from-ai-cyan to-ai-blue hover:from-ai-blue hover:to-ai-purple transition-all shadow-glow group/btn"
+                      >
+                        <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                          <ExternalLink className="w-4 h-4 mr-2 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
+                          Demo
+                        </a>
+                      </Button>
+                    )}
+                  </div>
+                </CardContent>
+
+                {/* Animated corner accent */}
+                <div className="absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-tl from-ai-cyan/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              </Card>
+            </motion.div>
           ))}
-        </div>
-
-        {/* Call to Action */}
-        <div className={`text-center mt-16 ${isInView ? 'animate-scale-in' : 'opacity-0'}`} style={{ animationDelay: '1s' }}>
-          <Card className="max-w-2xl mx-auto shadow-card hover:shadow-glow hover:scale-105 transition-all duration-500">
-            <CardContent className="p-8">
-              <h3 className="text-2xl font-bold mb-4 text-foreground">
-                Interested in Collaboration?
-              </h3>
-              <p className="text-muted-foreground mb-6">
-                I'm always open to discussing new projects, innovative ideas, 
-                and opportunities to create impactful AI solutions.
-              </p>
-              <div className="flex gap-4 justify-center">
-                <Button className="gradient-primary text-white hover:shadow-glow hover:scale-110 transition-all duration-300 group" asChild>
-                  <a href="https://github.com/Roksana18cse04" target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="w-4 h-4 mr-2 group-hover:animate-bounce" />
-                    View All Projects
-                  </a>
-                </Button>
-                <Button variant="outline" className="hover:shadow-glow hover:scale-110 transition-all duration-300 group" asChild>
-                  <a href="https://docs.google.com/document/d/1KyowXvngxtBpmJ0JyS6rtfE_BEGegI5PTBRwr15Exp8/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="w-4 h-4 mr-2 group-hover:animate-bounce" />
-                    View Documentation
-                  </a>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
         </div>
       </div>
     </section>
