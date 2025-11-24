@@ -65,9 +65,9 @@ const Projects = () => {
   const getStatusColor = (status: string) => {
     switch (status) {
       case "Production":
-        return "bg-ai-green/20 text-ai-green border-ai-green/50";
+        return "bg-pink-soft/20 text-pink-accent border-pink-accent/50";
       case "Development":
-        return "bg-ai-blue/20 text-ai-blue border-ai-blue/50";
+        return "bg-pink-rose/20 text-pink-rose border-pink-rose/50";
       default:
         return "bg-muted/20 text-muted-foreground border-muted";
     }
@@ -77,8 +77,8 @@ const Projects = () => {
     <section id="projects" className="py-20 relative overflow-hidden bg-secondary/30" ref={setRef}>
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-40 right-20 w-96 h-96 bg-ai-cyan/10 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-40 left-20 w-80 h-80 bg-ai-purple/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-40 right-20 w-96 h-96 bg-pink-light/10 rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-40 left-20 w-80 h-80 bg-pink-accent/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -89,7 +89,7 @@ const Projects = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-ai-cyan via-ai-blue to-ai-purple bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-pink-light via-pink-rose to-pink-accent bg-clip-text text-transparent">
               Featured Projects
             </span>
           </h2>
@@ -107,9 +107,9 @@ const Projects = () => {
               transition={{ delay: index * 0.2, duration: 0.8 }}
               className="group perspective-1000"
             >
-              <Card className="h-full shadow-card hover:shadow-neon transition-all duration-500 hover:-translate-y-4 relative overflow-hidden border-2 border-transparent hover:border-ai-cyan/50 group-hover:scale-[1.02]">
+              <Card className="h-full shadow-card hover:shadow-neon transition-all duration-500 hover:-translate-y-4 relative overflow-hidden border-2 border-transparent hover:border-pink-light/50 group-hover:scale-[1.02]">
                 {/* Animated gradient border effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-ai-blue via-ai-purple to-ai-cyan opacity-0 group-hover:opacity-10 transition-opacity blur-2xl" />
+                <div className="absolute inset-0 bg-gradient-to-br from-pink-rose via-pink-accent to-pink-light opacity-0 group-hover:opacity-10 transition-opacity blur-2xl" />
                 
                 {/* Sparkle effect on hover */}
                 <motion.div
@@ -117,7 +117,7 @@ const Projects = () => {
                   animate={{ rotate: 360 }}
                   transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                 >
-                  <Sparkles className="w-6 h-6 text-ai-cyan" />
+                  <Sparkles className="w-6 h-6 text-pink-light" />
                 </motion.div>
 
                 <CardHeader className="relative">
@@ -136,7 +136,7 @@ const Projects = () => {
                       {project.status}
                     </Badge>
                   </div>
-                  <CardTitle className="text-xl font-bold group-hover:text-ai-cyan transition-colors">
+                  <CardTitle className="text-xl font-bold group-hover:text-pink-light transition-colors">
                     {project.title}
                   </CardTitle>
                 </CardHeader>
@@ -154,7 +154,7 @@ const Projects = () => {
                       >
                         <Badge 
                           variant="secondary" 
-                          className="text-xs font-medium hover:bg-gradient-to-r hover:from-ai-blue/20 hover:to-ai-purple/20 hover:border-ai-cyan/50 transition-all cursor-default"
+                          className="text-xs font-medium hover:bg-gradient-to-r hover:from-pink-rose/20 hover:to-pink-accent/20 hover:border-pink-light/50 transition-all cursor-default"
                         >
                           {tech}
                         </Badge>
@@ -167,7 +167,7 @@ const Projects = () => {
                       asChild 
                       size="sm" 
                       variant="outline" 
-                      className="flex-1 border-ai-cyan/50 hover:border-ai-cyan hover:bg-ai-cyan/10 transition-all group/btn"
+                      className="flex-1 border-pink-light/50 hover:border-pink-light hover:bg-pink-light/10 transition-all group/btn"
                     >
                       <a href={project.github} target="_blank" rel="noopener noreferrer">
                         <Github className="w-4 h-4 mr-2 group-hover/btn:rotate-12 transition-transform" />
@@ -178,7 +178,7 @@ const Projects = () => {
                       <Button 
                         asChild 
                         size="sm" 
-                        className="flex-1 bg-gradient-to-r from-ai-cyan to-ai-blue hover:from-ai-blue hover:to-ai-purple transition-all shadow-glow group/btn"
+                        className="flex-1 bg-gradient-to-r from-pink-light to-pink-rose hover:from-pink-rose hover:to-pink-accent transition-all shadow-glow group/btn"
                       >
                         <a href={project.demo} target="_blank" rel="noopener noreferrer">
                           <ExternalLink className="w-4 h-4 mr-2 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
@@ -190,7 +190,7 @@ const Projects = () => {
                 </CardContent>
 
                 {/* Animated corner accent */}
-                <div className="absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-tl from-ai-cyan/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-tl from-pink-light/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               </Card>
             </motion.div>
           ))}

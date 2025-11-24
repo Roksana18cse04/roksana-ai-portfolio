@@ -72,19 +72,19 @@ const Contact = () => {
       icon: Github,
       label: "GitHub",
       link: "https://github.com/Roksana18cse04",
-      color: "hover:text-ai-blue"
+      color: "hover:text-pink-rose"
     },
     {
       icon: Linkedin,
       label: "LinkedIn", 
       link: "https://linkedin.com/in/roksana00mymensingh/",
-      color: "hover:text-ai-blue"
+      color: "hover:text-pink-rose"
     },
     {
       icon: Mail,
       label: "Email",
       link: "mailto:roksana.tech.2000@gmail.com",
-      color: "hover:text-ai-purple"
+      color: "hover:text-pink-accent"
     }
   ];
 
@@ -204,7 +204,7 @@ const Contact = () => {
                       <div className="font-semibold text-foreground">{info.label}</div>
                       <a 
                         href={info.link}
-                        className="text-muted-foreground hover:text-ai-blue transition-smooth"
+                        className="text-muted-foreground hover:text-pink-rose transition-smooth"
                       >
                         {info.value}
                       </a>
@@ -249,7 +249,7 @@ const Contact = () => {
             <Card className="shadow-card">
               <CardContent className="p-6">
                 <div className="flex items-center space-x-3">
-                  <div className="w-3 h-3 rounded-full bg-ai-green animate-pulse"></div>
+                  <div className="w-3 h-3 rounded-full bg-pink-soft animate-pulse"></div>
                   <div>
                     <div className="font-semibold text-foreground">Available for Projects</div>
                     <div className="text-sm text-muted-foreground">

@@ -80,11 +80,11 @@ const About = () => {
             {/* Key Stats */}
             <div className="grid grid-cols-2 gap-4">
               <div className="text-center">
-                <div className="text-3xl font-bold text-ai-blue">5+</div>
+                <div className="text-3xl font-bold text-pink-rose">5+</div>
                 <div className="text-sm text-muted-foreground">Years Experience</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-ai-purple">50+</div>
+                <div className="text-3xl font-bold text-pink-accent">50+</div>
                 <div className="text-sm text-muted-foreground">Projects Completed</div>
               </div>
             </div>
@@ -97,7 +97,7 @@ const About = () => {
                   href="https://www.linkedin.com/in/roksana00mymensingh/" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-muted-foreground hover:text-ai-blue transition-colors"
+                  className="flex items-center gap-3 text-muted-foreground hover:text-pink-rose transition-colors"
                 >
                   <Linkedin className="h-5 w-5" />
                   <span>LinkedIn Profile</span>
@@ -106,7 +106,7 @@ const About = () => {
                   href="https://github.com/Roksana18cse04" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-muted-foreground hover:text-ai-purple transition-colors"
+                  className="flex items-center gap-3 text-muted-foreground hover:text-pink-accent transition-colors"
                 >
                   <Github className="h-5 w-5" />
                   <span>GitHub Profile</span>
