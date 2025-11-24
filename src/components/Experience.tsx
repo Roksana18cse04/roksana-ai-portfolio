@@ -47,7 +47,7 @@ const Experience = () => {
           {/* Experience Section */}
           <div>
             <h3 className="text-2xl font-bold mb-8 flex items-center text-foreground">
-              <Briefcase className="w-6 h-6 mr-3 text-ai-blue" />
+              <Briefcase className="w-6 h-6 mr-3 text-pink-rose" />
               Professional Experience
             </h3>
             <div className="space-y-6">
@@ -56,9 +56,9 @@ const Experience = () => {
                   <CardHeader>
                     <CardTitle className="text-xl font-bold text-foreground">{exp.title}</CardTitle>
                     <div className="space-y-2">
-                      <div className="text-lg font-semibold text-ai-blue">{exp.company}</div>
+                      <div className="text-lg font-semibold text-pink-rose">{exp.company}</div>
                       {exp.note && (
-                        <div className="text-sm text-ai-purple font-medium italic">
+                        <div className="text-sm text-pink-accent font-medium italic">
                           {exp.note}
                         </div>
                       )}
@@ -78,7 +78,7 @@ const Experience = () => {
                     <ul className="space-y-2">
                       {exp.description.map((item, idx) => (
                         <li key={idx} className="text-muted-foreground flex items-start">
-                          <span className="w-2 h-2 rounded-full bg-ai-blue mt-2 mr-3 flex-shrink-0"></span>
+                          <span className="w-2 h-2 rounded-full bg-pink-rose mt-2 mr-3 flex-shrink-0"></span>
                           {item}
                         </li>
                       ))}
@@ -99,7 +99,7 @@ const Experience = () => {
           {/* Education Section */}
           <div>
             <h3 className="text-2xl font-bold mb-8 flex items-center text-foreground">
-              <GraduationCap className="w-6 h-6 mr-3 text-ai-purple" />
+              <GraduationCap className="w-6 h-6 mr-3 text-pink-accent" />
               Education
             </h3>
             <div className="space-y-6">
@@ -108,7 +108,7 @@ const Experience = () => {
                   <CardContent className="p-6">
                     <div className="space-y-3">
                       <h4 className="text-lg font-bold text-foreground">{edu.degree}</h4>
-                      <div className="text-ai-purple font-semibold">{edu.specialization}</div>
+                      <div className="text-pink-accent font-semibold">{edu.specialization}</div>
                       <div className="text-lg font-semibold text-foreground">{edu.institution}</div>
                       <div className="flex items-center text-sm text-muted-foreground">
                         <Calendar className="w-4 h-4 mr-1" />
@@ -117,7 +117,7 @@ const Experience = () => {
                       <ul className="space-y-1">
                         {edu.achievements.map((achievement, idx) => (
                           <li key={idx} className="text-muted-foreground flex items-start">
-                            <Award className="w-4 h-4 text-ai-purple mt-1 mr-3 flex-shrink-0" />
+                            <Award className="w-4 h-4 text-pink-accent mt-1 mr-3 flex-shrink-0" />
                             {achievement}
                           </li>
                         ))}
@@ -138,7 +138,7 @@ const Experience = () => {
                       <div>
                         <span className="text-foreground font-medium">Data Analysis with Python</span>
                         <div className="text-sm text-muted-foreground">EDGE Digital Skills for Students</div>
-                        <div className="text-xs text-ai-purple">BSMRSTU_EDGE</div>
+                        <div className="text-xs text-pink-accent">BSMRSTU_EDGE</div>
                       </div>
                       <Badge variant="outline">2024</Badge>
                     </div>
