@@ -128,7 +128,7 @@ const Footer = () => {
           
           <div className="flex items-center space-x-2 text-sm text-muted-foreground">
             <span>Built with</span>
-            <div className="w-4 h-4 rounded-full bg-gradient-to-r from-pink-rose to-pink-accent flex items-center justify-center">
+            <div className="w-4 h-4 rounded-full bg-gradient-to-r from-tech-blue to-tech-purple flex items-center justify-center">
               <Heart className="w-3 h-3 text-white fill-current" />
             </div>
             <span>using React & AI</span>

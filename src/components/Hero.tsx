@@ -42,7 +42,7 @@ const Hero = () => {
         {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-2 h-2 bg-pink-rose/30 rounded-full"
+            className="absolute w-2 h-2 bg-tech-cyan/30 rounded-full"
             initial={{
               x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
               y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
@@ -71,7 +71,7 @@ const Hero = () => {
             className="mb-8"
           >
             <div className="relative inline-block group">
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-pink-rose via-pink-light to-pink-accent opacity-75 blur-xl group-hover:opacity-100 transition-opacity animate-pulse"></div>
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-tech-blue via-tech-cyan to-tech-purple opacity-75 blur-xl group-hover:opacity-100 transition-opacity animate-pulse"></div>
               <img 
                 src="/Roksana.png" 
                 alt="Roksana Akter" 
@@ -82,7 +82,7 @@ const Hero = () => {
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
               >
-                <Sparkles className="w-8 h-8 text-pink-accent" />
+                <Sparkles className="w-8 h-8 text-tech-violet" />
               </motion.div>
             </div>
           </motion.div>
@@ -99,7 +99,7 @@ const Hero = () => {
                 transition={{ duration: 1 }}
                 className="relative inline-block"
               >
-                <span className="bg-gradient-to-r from-pink-rose via-pink-light to-pink-accent bg-clip-text text-transparent bg-300% animate-gradient">
+                <span className="bg-gradient-to-r from-tech-blue via-tech-cyan to-tech-purple bg-clip-text text-transparent bg-300% animate-gradient">
                   Roksana Akter Nipa
                 </span>
               </motion.span>
@@ -112,10 +112,10 @@ const Hero = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
           >
-            <span className="bg-gradient-to-r from-pink-rose via-pink-light to-pink-accent bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-tech-blue via-tech-cyan to-tech-purple bg-clip-text text-transparent">
               {typedText}
             </span>
-            <span className="animate-blink text-pink-rose">|</span>
+            <span className="animate-blink text-tech-cyan">|</span>
           </motion.div>
 
           <motion.p
@@ -145,12 +145,12 @@ const Hero = () => {
                 Get In Touch
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-pink-accent to-pink-light opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute inset-0 bg-gradient-to-r from-tech-purple to-tech-cyan opacity-0 group-hover:opacity-100 transition-opacity" />
             </Button>
             <Button 
               size="lg" 
               variant="outline"
-              className="relative overflow-hidden group border-2 border-pink-rose hover:border-pink-accent transition-all hover:shadow-glow"
+              className="relative overflow-hidden group border-2 border-tech-cyan hover:border-tech-purple transition-all hover:shadow-glow"
               asChild
             >
               <a href="/Roksana_Resume.pdf" download="Roksana_Resume.pdf" className="relative z-10">
@@ -174,8 +174,8 @@ const Hero = () => {
               asChild
             >
               <a href="https://github.com/Roksana18cse04" target="_blank" rel="noopener noreferrer">
-                <Github className="h-6 w-6 group-hover:text-pink-rose transition-colors relative z-10" />
-                <div className="absolute inset-0 bg-pink-rose/20 scale-0 group-hover:scale-100 transition-transform rounded-full" />
+                <Github className="h-6 w-6 group-hover:text-tech-cyan transition-colors relative z-10" />
+                <div className="absolute inset-0 bg-tech-cyan/20 scale-0 group-hover:scale-100 transition-transform rounded-full" />
               </a>
             </Button>
             <Button 
@@ -185,8 +185,8 @@ const Hero = () => {
               asChild
             >
               <a href="https://www.linkedin.com/in/roksana-akter-a79b77232/" target="_blank" rel="noopener noreferrer">
-                <Linkedin className="h-6 w-6 group-hover:text-pink-rose transition-colors relative z-10" />
-                <div className="absolute inset-0 bg-pink-rose/20 scale-0 group-hover:scale-100 transition-transform rounded-full" />
+                <Linkedin className="h-6 w-6 group-hover:text-tech-blue transition-colors relative z-10" />
+                <div className="absolute inset-0 bg-tech-blue/20 scale-0 group-hover:scale-100 transition-transform rounded-full" />
               </a>
             </Button>
             <Button 
@@ -195,8 +195,8 @@ const Hero = () => {
               className="relative overflow-hidden group hover:scale-110 transition-all"
               onClick={scrollToContact}
             >
-              <Mail className="h-6 w-6 group-hover:text-pink-rose transition-colors relative z-10" />
-              <div className="absolute inset-0 bg-pink-rose/20 scale-0 group-hover:scale-100 transition-transform rounded-full" />
+              <Mail className="h-6 w-6 group-hover:text-tech-purple transition-colors relative z-10" />
+              <div className="absolute inset-0 bg-tech-purple/20 scale-0 group-hover:scale-100 transition-transform rounded-full" />
             </Button>
           </motion.div>
         </div>
@@ -210,11 +210,11 @@ const Hero = () => {
         transition={{ delay: 2, duration: 0.8 }}
       >
         <motion.div
-          className="w-6 h-10 border-2 border-pink-rose rounded-full flex justify-center p-2"
+          className="w-6 h-10 border-2 border-tech-cyan rounded-full flex justify-center p-2"
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
         >
-          <motion.div className="w-1 h-3 bg-pink-rose rounded-full" />
+          <motion.div className="w-1 h-3 bg-tech-cyan rounded-full" />
         </motion.div>
       </motion.div>
     </section>
