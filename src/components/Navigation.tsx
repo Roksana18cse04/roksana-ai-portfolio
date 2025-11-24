@@ -43,7 +43,7 @@ const Navigation = () => {
                   className="text-muted-foreground hover:text-primary hover:scale-105 transition-all duration-300 px-3 py-2 rounded-md text-sm font-medium hover:bg-secondary relative overflow-hidden group"
                 >
                   <span className="relative z-10">{item.name}</span>
-                  <span className="absolute inset-0 bg-gradient-to-r from-pink-rose/10 to-pink-light/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                  <span className="absolute inset-0 bg-gradient-to-r from-tech-blue/10 to-tech-cyan/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
                 </button>
               ))}
             </div>

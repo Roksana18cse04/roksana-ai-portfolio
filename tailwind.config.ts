@@ -47,11 +47,12 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        pink: {
-          rose: "hsl(var(--pink-rose))",
-          light: "hsl(var(--pink-light))",
-          soft: "hsl(var(--pink-soft))",
-          accent: "hsl(var(--pink-accent))",
+        tech: {
+          blue: "hsl(var(--tech-blue))",
+          cyan: "hsl(var(--tech-cyan))",
+          purple: "hsl(var(--tech-purple))",
+          violet: "hsl(var(--tech-violet))",
+          emerald: "hsl(var(--tech-emerald))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
