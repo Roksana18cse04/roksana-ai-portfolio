@@ -47,13 +47,17 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        tech: {
-          blue: "hsl(var(--tech-blue))",
-          cyan: "hsl(var(--tech-cyan))",
-          purple: "hsl(var(--tech-purple))",
-          violet: "hsl(var(--tech-violet))",
-          emerald: "hsl(var(--tech-emerald))",
+        pink: {
+          light: "hsl(var(--pink-light))",
+          soft: "hsl(var(--pink-soft))",
+          medium: "hsl(var(--pink-medium))",
+          primary: "hsl(var(--pink-primary))",
+          dark: "hsl(var(--pink-dark))",
+          rose: "hsl(var(--pink-rose))",
+          blush: "hsl(var(--pink-blush))",
         },
+        "rose-gold": "hsl(var(--rose-gold))",
+        cream: "hsl(var(--cream))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -166,10 +170,10 @@ export default {
         },
         "glow": {
           "0%, 100%": {
-            boxShadow: "0 0 20px hsl(var(--ai-blue) / 0.3)"
+            boxShadow: "0 0 20px hsl(var(--pink-primary) / 0.3)"
           },
           "50%": {
-            boxShadow: "0 0 40px hsl(var(--ai-blue) / 0.6)"
+            boxShadow: "0 0 40px hsl(var(--pink-primary) / 0.6)"
           }
         },
         "float": {

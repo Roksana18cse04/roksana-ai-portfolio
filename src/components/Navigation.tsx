@@ -40,10 +40,10 @@ const Navigation = () => {
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="text-muted-foreground hover:text-primary hover:scale-105 transition-all duration-300 px-3 py-2 rounded-md text-sm font-medium hover:bg-secondary relative overflow-hidden group"
+                  className="text-muted-foreground hover:text-pink-primary hover:scale-105 transition-all duration-300 px-3 py-2 rounded-md text-sm font-medium hover:bg-pink-light relative overflow-hidden group"
                 >
                   <span className="relative z-10">{item.name}</span>
-                  <span className="absolute inset-0 bg-gradient-to-r from-tech-blue/10 to-tech-cyan/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                  <span className="absolute inset-0 bg-gradient-to-r from-pink-primary/10 to-pink-rose/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
                 </button>
               ))}
             </div>
@@ -73,7 +73,7 @@ const Navigation = () => {
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="block px-3 py-2 rounded-md text-base font-medium text-muted-foreground hover:text-primary hover:bg-secondary transition-smooth w-full text-left"
+                className="block px-3 py-2 rounded-md text-base font-medium text-muted-foreground hover:text-pink-primary hover:bg-pink-light transition-smooth w-full text-left"
               >
                 {item.name}
               </button>
