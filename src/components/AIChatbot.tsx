@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, Send, Bot, User, Sparkles } from "lucide-react";
+import { MessageCircle, X, Send, Bot, User, Sparkles, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -17,7 +17,7 @@ const AIChatbot = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: "Hi! I'm Roksana's AI assistant. Ask me anything about her skills, experience, or projects! 👋",
+      content: "Hi! I'm Roksana's AI assistant. Ask me anything about her skills, experience, or projects! 💕",
     },
   ]);
   const [input, setInput] = useState("");
@@ -127,7 +127,7 @@ const AIChatbot = () => {
       >
         <Button
           onClick={() => setIsOpen(!isOpen)}
-          className="h-14 w-14 rounded-full bg-gradient-to-r from-tech-cyan to-tech-blue shadow-lg shadow-tech-cyan/30 hover:shadow-tech-cyan/50 transition-all duration-300"
+          className="h-14 w-14 rounded-full bg-gradient-to-r from-pink-primary to-pink-rose shadow-lg shadow-pink-primary/30 hover:shadow-pink-primary/50 transition-all duration-300"
         >
           <AnimatePresence mode="wait">
             {isOpen ? (
@@ -137,7 +137,7 @@ const AIChatbot = () => {
                 animate={{ rotate: 0, opacity: 1 }}
                 exit={{ rotate: 90, opacity: 0 }}
               >
-                <X className="h-6 w-6" />
+                <X className="h-6 w-6 text-white" />
               </motion.div>
             ) : (
               <motion.div
@@ -146,7 +146,7 @@ const AIChatbot = () => {
                 animate={{ rotate: 0, opacity: 1 }}
                 exit={{ rotate: -90, opacity: 0 }}
               >
-                <MessageCircle className="h-6 w-6" />
+                <MessageCircle className="h-6 w-6 text-white" />
               </motion.div>
             )}
           </AnimatePresence>
@@ -161,20 +161,20 @@ const AIChatbot = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed bottom-24 right-6 z-50 w-[350px] md:w-[400px] h-[500px] bg-tech-darker/95 backdrop-blur-xl border border-tech-cyan/20 rounded-2xl shadow-2xl shadow-tech-cyan/10 flex flex-col overflow-hidden"
+            className="fixed bottom-24 right-6 z-50 w-[350px] md:w-[400px] h-[500px] bg-white/95 backdrop-blur-xl border border-pink-soft rounded-2xl shadow-2xl shadow-pink-primary/10 flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className="p-4 bg-gradient-to-r from-tech-cyan/10 to-tech-blue/10 border-b border-tech-cyan/20">
+            <div className="p-4 bg-gradient-to-r from-pink-primary/10 to-pink-rose/10 border-b border-pink-soft">
               <div className="flex items-center gap-3">
                 <div className="relative">
-                  <div className="h-10 w-10 rounded-full bg-gradient-to-r from-tech-cyan to-tech-blue flex items-center justify-center">
+                  <div className="h-10 w-10 rounded-full bg-gradient-to-r from-pink-primary to-pink-rose flex items-center justify-center">
                     <Bot className="h-5 w-5 text-white" />
                   </div>
-                  <Sparkles className="absolute -top-1 -right-1 h-4 w-4 text-tech-cyan animate-pulse" />
+                  <Heart className="absolute -top-1 -right-1 h-4 w-4 text-pink-rose fill-pink-rose animate-pulse" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-white">Roksana's AI Assistant</h3>
-                  <p className="text-xs text-tech-cyan/70">Ask me anything!</p>
+                  <h3 className="font-semibold text-foreground">Roksana's AI Assistant</h3>
+                  <p className="text-xs text-pink-primary/70">Ask me anything!</p>
                 </div>
               </div>
             </div>
@@ -190,22 +190,22 @@ const AIChatbot = () => {
                     className={`flex gap-2 ${message.role === "user" ? "justify-end" : "justify-start"}`}
                   >
                     {message.role === "assistant" && (
-                      <div className="h-8 w-8 rounded-full bg-gradient-to-r from-tech-cyan to-tech-blue flex items-center justify-center flex-shrink-0">
+                      <div className="h-8 w-8 rounded-full bg-gradient-to-r from-pink-primary to-pink-rose flex items-center justify-center flex-shrink-0">
                         <Bot className="h-4 w-4 text-white" />
                       </div>
                     )}
                     <div
                       className={`max-w-[80%] p-3 rounded-2xl ${
                         message.role === "user"
-                          ? "bg-gradient-to-r from-tech-cyan to-tech-blue text-white rounded-br-md"
-                          : "bg-tech-dark/50 text-gray-200 border border-tech-cyan/10 rounded-bl-md"
+                          ? "bg-gradient-to-r from-pink-primary to-pink-rose text-white rounded-br-md"
+                          : "bg-pink-light text-foreground border border-pink-soft rounded-bl-md"
                       }`}
                     >
                       <p className="text-sm whitespace-pre-wrap">{message.content}</p>
                     </div>
                     {message.role === "user" && (
-                      <div className="h-8 w-8 rounded-full bg-tech-purple/30 flex items-center justify-center flex-shrink-0">
-                        <User className="h-4 w-4 text-tech-purple" />
+                      <div className="h-8 w-8 rounded-full bg-pink-light flex items-center justify-center flex-shrink-0">
+                        <User className="h-4 w-4 text-pink-primary" />
                       </div>
                     )}
                   </motion.div>
@@ -216,14 +216,14 @@ const AIChatbot = () => {
                     animate={{ opacity: 1 }}
                     className="flex gap-2 justify-start"
                   >
-                    <div className="h-8 w-8 rounded-full bg-gradient-to-r from-tech-cyan to-tech-blue flex items-center justify-center">
+                    <div className="h-8 w-8 rounded-full bg-gradient-to-r from-pink-primary to-pink-rose flex items-center justify-center">
                       <Bot className="h-4 w-4 text-white" />
                     </div>
-                    <div className="bg-tech-dark/50 border border-tech-cyan/10 p-3 rounded-2xl rounded-bl-md">
+                    <div className="bg-pink-light border border-pink-soft p-3 rounded-2xl rounded-bl-md">
                       <div className="flex gap-1">
-                        <span className="h-2 w-2 bg-tech-cyan rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
-                        <span className="h-2 w-2 bg-tech-cyan rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
-                        <span className="h-2 w-2 bg-tech-cyan rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
+                        <span className="h-2 w-2 bg-pink-primary rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
+                        <span className="h-2 w-2 bg-pink-primary rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
+                        <span className="h-2 w-2 bg-pink-primary rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
                       </div>
                     </div>
                   </motion.div>
@@ -232,7 +232,7 @@ const AIChatbot = () => {
             </ScrollArea>
 
             {/* Input */}
-            <div className="p-4 border-t border-tech-cyan/20 bg-tech-darker/50">
+            <div className="p-4 border-t border-pink-soft bg-white/50">
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -244,13 +244,13 @@ const AIChatbot = () => {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Ask about Roksana..."
-                  className="flex-1 bg-tech-dark/50 border-tech-cyan/20 text-white placeholder:text-gray-500 focus:border-tech-cyan/50"
+                  className="flex-1 bg-pink-light/50 border-pink-soft text-foreground placeholder:text-muted-foreground focus:border-pink-primary"
                   disabled={isLoading}
                 />
                 <Button
                   type="submit"
                   disabled={isLoading || !input.trim()}
-                  className="bg-gradient-to-r from-tech-cyan to-tech-blue hover:opacity-90 transition-opacity"
+                  className="bg-gradient-to-r from-pink-primary to-pink-rose hover:opacity-90 transition-opacity text-white"
                 >
                   <Send className="h-4 w-4" />
                 </Button>

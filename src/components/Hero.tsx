@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Mail, Download, ArrowRight, Sparkles } from "lucide-react";
+import { Github, Linkedin, Mail, Download, ArrowRight, Sparkles, Heart } from "lucide-react";
 import { motion } from "framer-motion";
 import { useTypingEffect } from "@/hooks/useAnimations";
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const typedText = useTypingEffect("AI/ML Engineer & Data Scientist", 100);
+  const typedText = useTypingEffect("AI/ML Engineer & Flutter Developer", 100);
 
   useEffect(() => {
     setIsLoaded(true);
@@ -27,22 +27,22 @@ const Hero = () => {
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Animated gradient background with mouse tracking */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-secondary/20 to-background">
+      {/* Elegant gradient background with mouse tracking */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-pink-light/30 to-background">
         <div 
-          className="absolute inset-0 opacity-30 transition-all duration-300"
+          className="absolute inset-0 opacity-40 transition-all duration-300"
           style={{
-            background: `radial-gradient(600px at ${mousePosition.x}px ${mousePosition.y}px, hsl(340 82% 67% / 0.15), transparent 80%)`
+            background: `radial-gradient(600px at ${mousePosition.x}px ${mousePosition.y}px, hsl(340 82% 52% / 0.12), transparent 80%)`
           }}
         />
       </div>
       
-      {/* Floating particles */}
+      {/* Floating hearts/particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(15)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-2 h-2 bg-tech-cyan/30 rounded-full"
+            className="absolute"
             initial={{
               x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
               y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
@@ -56,7 +56,9 @@ const Hero = () => {
               repeat: Infinity,
               repeatType: "reverse",
             }}
-          />
+          >
+            <Heart className="w-3 h-3 text-pink-soft/40 fill-pink-soft/20" />
+          </motion.div>
         ))}
       </div>
       
@@ -71,18 +73,18 @@ const Hero = () => {
             className="mb-8"
           >
             <div className="relative inline-block group">
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-tech-blue via-tech-cyan to-tech-purple opacity-75 blur-xl group-hover:opacity-100 transition-opacity animate-pulse"></div>
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-pink-primary via-pink-rose to-pink-blush opacity-60 blur-xl group-hover:opacity-80 transition-opacity animate-pulse"></div>
               <img 
                 src="/Roksana.png" 
                 alt="Roksana Akter" 
-                className="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-primary/20 shadow-glow mx-auto object-cover group-hover:scale-110 transition-transform duration-300"
+                className="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-pink-soft shadow-glow mx-auto object-cover group-hover:scale-110 transition-transform duration-300"
               />
               <motion.div
                 className="absolute -top-4 -right-4"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
               >
-                <Sparkles className="w-8 h-8 text-tech-violet" />
+                <Sparkles className="w-8 h-8 text-pink-rose" />
               </motion.div>
             </div>
           </motion.div>
@@ -99,8 +101,8 @@ const Hero = () => {
                 transition={{ duration: 1 }}
                 className="relative inline-block"
               >
-                <span className="bg-gradient-to-r from-tech-blue via-tech-cyan to-tech-purple bg-clip-text text-transparent bg-300% animate-gradient">
-                  Roksana Akter Nipa
+                <span className="bg-gradient-to-r from-pink-primary via-pink-rose to-pink-dark bg-clip-text text-transparent bg-300% animate-gradient">
+                  Roksana Akter
                 </span>
               </motion.span>
             </h1>
@@ -112,10 +114,10 @@ const Hero = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
           >
-            <span className="bg-gradient-to-r from-tech-blue via-tech-cyan to-tech-purple bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-pink-primary via-pink-rose to-pink-medium bg-clip-text text-transparent">
               {typedText}
             </span>
-            <span className="animate-blink text-tech-cyan">|</span>
+            <span className="animate-blink text-pink-primary">|</span>
           </motion.div>
 
           <motion.p
@@ -137,7 +139,7 @@ const Hero = () => {
           >
             <Button 
               size="lg" 
-              className="relative overflow-hidden group shadow-glow hover:shadow-neon"
+              className="relative overflow-hidden group shadow-glow hover:shadow-neon bg-gradient-to-r from-pink-primary to-pink-rose text-white"
               onClick={scrollToContact}
             >
               <span className="relative z-10 flex items-center">
@@ -145,12 +147,12 @@ const Hero = () => {
                 Get In Touch
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-tech-purple to-tech-cyan opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute inset-0 bg-gradient-to-r from-pink-rose to-pink-dark opacity-0 group-hover:opacity-100 transition-opacity" />
             </Button>
             <Button 
               size="lg" 
               variant="outline"
-              className="relative overflow-hidden group border-2 border-tech-cyan hover:border-tech-purple transition-all hover:shadow-glow"
+              className="relative overflow-hidden group border-2 border-pink-primary hover:border-pink-rose transition-all hover:shadow-glow text-pink-primary hover:text-pink-rose"
               asChild
             >
               <a href="/Roksana_Resume.pdf" download="Roksana_Resume.pdf" className="relative z-10">
@@ -174,8 +176,8 @@ const Hero = () => {
               asChild
             >
               <a href="https://github.com/Roksana18cse04" target="_blank" rel="noopener noreferrer">
-                <Github className="h-6 w-6 group-hover:text-tech-cyan transition-colors relative z-10" />
-                <div className="absolute inset-0 bg-tech-cyan/20 scale-0 group-hover:scale-100 transition-transform rounded-full" />
+                <Github className="h-6 w-6 group-hover:text-pink-primary transition-colors relative z-10" />
+                <div className="absolute inset-0 bg-pink-primary/10 scale-0 group-hover:scale-100 transition-transform rounded-full" />
               </a>
             </Button>
             <Button 
@@ -185,8 +187,8 @@ const Hero = () => {
               asChild
             >
               <a href="https://www.linkedin.com/in/roksana-akter-a79b77232/" target="_blank" rel="noopener noreferrer">
-                <Linkedin className="h-6 w-6 group-hover:text-tech-blue transition-colors relative z-10" />
-                <div className="absolute inset-0 bg-tech-blue/20 scale-0 group-hover:scale-100 transition-transform rounded-full" />
+                <Linkedin className="h-6 w-6 group-hover:text-pink-rose transition-colors relative z-10" />
+                <div className="absolute inset-0 bg-pink-rose/10 scale-0 group-hover:scale-100 transition-transform rounded-full" />
               </a>
             </Button>
             <Button 
@@ -195,8 +197,8 @@ const Hero = () => {
               className="relative overflow-hidden group hover:scale-110 transition-all"
               onClick={scrollToContact}
             >
-              <Mail className="h-6 w-6 group-hover:text-tech-purple transition-colors relative z-10" />
-              <div className="absolute inset-0 bg-tech-purple/20 scale-0 group-hover:scale-100 transition-transform rounded-full" />
+              <Mail className="h-6 w-6 group-hover:text-pink-dark transition-colors relative z-10" />
+              <div className="absolute inset-0 bg-pink-dark/10 scale-0 group-hover:scale-100 transition-transform rounded-full" />
             </Button>
           </motion.div>
         </div>
@@ -210,11 +212,11 @@ const Hero = () => {
         transition={{ delay: 2, duration: 0.8 }}
       >
         <motion.div
-          className="w-6 h-10 border-2 border-tech-cyan rounded-full flex justify-center p-2"
+          className="w-6 h-10 border-2 border-pink-primary rounded-full flex justify-center p-2"
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
         >
-          <motion.div className="w-1 h-3 bg-tech-cyan rounded-full" />
+          <motion.div className="w-1 h-3 bg-pink-primary rounded-full" />
         </motion.div>
       </motion.div>
     </section>

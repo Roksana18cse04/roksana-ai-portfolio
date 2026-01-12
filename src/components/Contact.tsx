@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Mail, Phone, MapPin, Send, Github, Linkedin } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Github, Linkedin, Heart } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
@@ -33,7 +33,7 @@ const Contact = () => {
     await new Promise(resolve => setTimeout(resolve, 1000));
     
     toast({
-      title: "Message Sent!",
+      title: "Message Sent! 💕",
       description: "Thank you for reaching out. I'll get back to you soon.",
     });
 
@@ -72,24 +72,24 @@ const Contact = () => {
       icon: Github,
       label: "GitHub",
       link: "https://github.com/Roksana18cse04",
-      color: "hover:text-tech-cyan"
+      color: "hover:text-pink-primary"
     },
     {
       icon: Linkedin,
       label: "LinkedIn", 
       link: "https://linkedin.com/in/roksana00mymensingh/",
-      color: "hover:text-tech-blue"
+      color: "hover:text-pink-rose"
     },
     {
       icon: Mail,
       label: "Email",
       link: "mailto:roksana.tech.2000@gmail.com",
-      color: "hover:text-tech-purple"
+      color: "hover:text-pink-dark"
     }
   ];
 
   return (
-    <section id="contact" className="py-20 bg-secondary/50">
+    <section id="contact" className="py-20 bg-pink-light/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -102,7 +102,7 @@ const Contact = () => {
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Form */}
-          <Card className="shadow-card">
+          <Card className="shadow-card bg-card border-pink-soft/30">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-foreground">
                 Send a Message
@@ -121,7 +121,7 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="transition-smooth focus:shadow-glow"
+                      className="transition-smooth focus:shadow-glow focus:border-pink-primary"
                     />
                   </div>
                   <div className="space-y-2">
@@ -134,7 +134,7 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="transition-smooth focus:shadow-glow"
+                      className="transition-smooth focus:shadow-glow focus:border-pink-primary"
                     />
                   </div>
                 </div>
@@ -149,7 +149,7 @@ const Contact = () => {
                     value={formData.subject}
                     onChange={handleInputChange}
                     required
-                    className="transition-smooth focus:shadow-glow"
+                    className="transition-smooth focus:shadow-glow focus:border-pink-primary"
                   />
                 </div>
                 
@@ -163,7 +163,7 @@ const Contact = () => {
                     onChange={handleInputChange}
                     required
                     rows={5}
-                    className="transition-smooth focus:shadow-glow"
+                    className="transition-smooth focus:shadow-glow focus:border-pink-primary"
                   />
                 </div>
                 
@@ -188,7 +188,7 @@ const Contact = () => {
           {/* Contact Information */}
           <div className="space-y-8">
             {/* Contact Details */}
-            <Card className="shadow-card">
+            <Card className="shadow-card bg-card border-pink-soft/30">
               <CardHeader>
                 <CardTitle className="text-2xl font-bold text-foreground">
                   Contact Information
@@ -204,7 +204,7 @@ const Contact = () => {
                       <div className="font-semibold text-foreground">{info.label}</div>
                       <a 
                         href={info.link}
-                        className="text-muted-foreground hover:text-tech-cyan transition-smooth"
+                        className="text-muted-foreground hover:text-pink-primary transition-smooth"
                       >
                         {info.value}
                       </a>
@@ -215,7 +215,7 @@ const Contact = () => {
             </Card>
 
             {/* Social Links */}
-            <Card className="shadow-card">
+            <Card className="shadow-card bg-card border-pink-soft/30">
               <CardHeader>
                 <CardTitle className="text-xl font-bold text-foreground">
                   Connect With Me
@@ -228,7 +228,7 @@ const Contact = () => {
                       key={index}
                       variant="outline"
                       size="lg"
-                      className={`transition-smooth ${social.color}`}
+                      className={`transition-smooth border-pink-soft ${social.color}`}
                       asChild
                     >
                       <a 
@@ -246,10 +246,10 @@ const Contact = () => {
             </Card>
 
             {/* Availability Status */}
-            <Card className="shadow-card">
+            <Card className="shadow-card bg-card border-pink-soft/30">
               <CardContent className="p-6">
                 <div className="flex items-center space-x-3">
-                  <div className="w-3 h-3 rounded-full bg-tech-emerald animate-pulse"></div>
+                  <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
                   <div>
                     <div className="font-semibold text-foreground">Available for Projects</div>
                     <div className="text-sm text-muted-foreground">
@@ -261,9 +261,9 @@ const Contact = () => {
             </Card>
 
             {/* Response Time */}
-            <Card className="shadow-card">
+            <Card className="shadow-card bg-card border-pink-soft/30">
               <CardContent className="p-6 text-center">
-                <div className="text-3xl mb-2">⚡</div>
+                <Heart className="w-8 h-8 text-pink-primary mx-auto mb-2 fill-pink-primary/30" />
                 <div className="font-semibold text-foreground mb-1">Quick Response</div>
                 <div className="text-sm text-muted-foreground">
                   I typically respond within 24 hours

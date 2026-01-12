@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Brain, Code, Lightbulb, Target, Linkedin, Github, Phone } from "lucide-react";
+import { Brain, Code, Lightbulb, Target, Linkedin, Github, Phone, Heart } from "lucide-react";
 import aiTechImage from "@/assets/ai-tech.jpg";
 
 const About = () => {
@@ -28,7 +28,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-secondary/50">
+    <section id="about" className="py-20 bg-pink-light/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -48,11 +48,12 @@ const About = () => {
                 alt="AI Technology" 
                 className="w-full h-96 object-cover"
               />
-              <div className="absolute inset-0 gradient-accent opacity-20" />
+              <div className="absolute inset-0 bg-gradient-to-br from-pink-primary/20 to-pink-rose/20" />
             </div>
             {/* Floating Badge */}
             <div className="absolute -top-4 -right-4">
               <Badge className="gradient-primary text-white text-lg px-4 py-2 shadow-glow">
+                <Heart className="w-4 h-4 mr-2 fill-current" />
                 AI/ML Expert
               </Badge>
             </div>
@@ -79,12 +80,12 @@ const About = () => {
 
             {/* Key Stats */}
             <div className="grid grid-cols-2 gap-4">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-tech-cyan">5+</div>
+              <div className="text-center p-4 rounded-xl bg-pink-light/50">
+                <div className="text-3xl font-bold text-pink-primary">5+</div>
                 <div className="text-sm text-muted-foreground">Years Experience</div>
               </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-tech-purple">50+</div>
+              <div className="text-center p-4 rounded-xl bg-pink-light/50">
+                <div className="text-3xl font-bold text-pink-rose">50+</div>
                 <div className="text-sm text-muted-foreground">Projects Completed</div>
               </div>
             </div>
@@ -97,7 +98,7 @@ const About = () => {
                   href="https://www.linkedin.com/in/roksana00mymensingh/" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-muted-foreground hover:text-tech-cyan transition-colors"
+                  className="flex items-center gap-3 text-muted-foreground hover:text-pink-primary transition-colors"
                 >
                   <Linkedin className="h-5 w-5" />
                   <span>LinkedIn Profile</span>
@@ -106,7 +107,7 @@ const About = () => {
                   href="https://github.com/Roksana18cse04" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-muted-foreground hover:text-tech-purple transition-colors"
+                  className="flex items-center gap-3 text-muted-foreground hover:text-pink-rose transition-colors"
                 >
                   <Github className="h-5 w-5" />
                   <span>GitHub Profile</span>
@@ -123,7 +124,7 @@ const About = () => {
         {/* Highlights Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
           {highlights.map((item, index) => (
-            <Card key={index} className="shadow-card hover:shadow-glow transition-bounce group rounded-3xl">
+            <Card key={index} className="shadow-card hover:shadow-glow transition-bounce group rounded-3xl bg-card border-pink-soft/30">
               <CardContent className="p-6 text-center">
                 <div className="w-12 h-12 mx-auto mb-4 rounded-full gradient-primary flex items-center justify-center group-hover:scale-110 transition-bounce">
                   <item.icon className="h-6 w-6 text-white" />

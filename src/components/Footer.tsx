@@ -27,7 +27,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-background border-t border-border">
+    <footer className="bg-background border-t border-pink-soft/30">
       <div className="container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-3 gap-8">
           {/* Brand Section */}
@@ -45,7 +45,7 @@ const Footer = () => {
                   key={index}
                   variant="outline"
                   size="sm"
-                  className="hover:bg-primary hover:text-primary-foreground transition-smooth"
+                  className="hover:bg-pink-primary hover:text-white hover:border-pink-primary transition-smooth border-pink-soft"
                   asChild
                 >
                   <a 
@@ -81,7 +81,7 @@ const Footer = () => {
                       element.scrollIntoView({ behavior: "smooth" });
                     }
                   }}
-                  className="text-left text-muted-foreground hover:text-primary transition-smooth text-sm"
+                  className="text-left text-muted-foreground hover:text-pink-primary transition-smooth text-sm"
                 >
                   {link.name}
                 </button>
@@ -118,19 +118,17 @@ const Footer = () => {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-border my-8"></div>
+        <div className="border-t border-pink-soft/30 my-8"></div>
 
         {/* Bottom Section */}
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <div className="text-sm text-muted-foreground">
-            © {currentYear} Roksana Ahmed. All rights reserved.
+            © {currentYear} Roksana Akter. All rights reserved.
           </div>
           
           <div className="flex items-center space-x-2 text-sm text-muted-foreground">
             <span>Built with</span>
-            <div className="w-4 h-4 rounded-full bg-gradient-to-r from-tech-blue to-tech-purple flex items-center justify-center">
-              <Heart className="w-3 h-3 text-white fill-current" />
-            </div>
+            <Heart className="w-4 h-4 text-pink-primary fill-pink-primary" />
             <span>using React & AI</span>
           </div>
 
@@ -138,7 +136,7 @@ const Footer = () => {
             variant="ghost"
             size="sm"
             onClick={scrollToTop}
-            className="hover:text-primary transition-smooth"
+            className="hover:text-pink-primary transition-smooth"
           >
             Back to Top ↑
           </Button>
