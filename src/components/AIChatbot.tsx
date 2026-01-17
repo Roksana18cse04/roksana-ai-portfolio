@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, Send, Bot, User, Sparkles, Heart } from "lucide-react";
+import { MessageCircle, X, Send, Bot, User, Sparkles, Zap, Terminal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -17,7 +17,7 @@ const AIChatbot = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: "Hi! I'm Roksana's AI assistant. Ask me anything about her skills, experience, or projects! 💕",
+      content: "Hey! I'm Roksana's AI assistant. Ask me anything about her skills, experience, or projects! ⚡",
     },
   ]);
   const [input, setInput] = useState("");
@@ -127,8 +127,10 @@ const AIChatbot = () => {
       >
         <Button
           onClick={() => setIsOpen(!isOpen)}
-          className="h-14 w-14 rounded-full bg-gradient-to-r from-pink-primary to-pink-rose shadow-lg shadow-pink-primary/30 hover:shadow-pink-primary/50 transition-all duration-300"
+          className="h-14 w-14 rounded-full bg-gradient-to-r from-cyber-cyan via-cyber-blue to-cyber-purple shadow-lg shadow-cyber-cyan/30 hover:shadow-cyber-cyan/50 transition-all duration-300 relative overflow-hidden group"
         >
+          {/* Animated glow ring */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyber-cyan via-cyber-blue to-cyber-purple opacity-0 group-hover:opacity-100 blur-md transition-opacity" />
           <AnimatePresence mode="wait">
             {isOpen ? (
               <motion.div
@@ -136,6 +138,7 @@ const AIChatbot = () => {
                 initial={{ rotate: -90, opacity: 0 }}
                 animate={{ rotate: 0, opacity: 1 }}
                 exit={{ rotate: 90, opacity: 0 }}
+                className="relative z-10"
               >
                 <X className="h-6 w-6 text-white" />
               </motion.div>
@@ -145,12 +148,15 @@ const AIChatbot = () => {
                 initial={{ rotate: 90, opacity: 0 }}
                 animate={{ rotate: 0, opacity: 1 }}
                 exit={{ rotate: -90, opacity: 0 }}
+                className="relative z-10"
               >
                 <MessageCircle className="h-6 w-6 text-white" />
               </motion.div>
             )}
           </AnimatePresence>
         </Button>
+        {/* Pulse effect */}
+        <div className="absolute inset-0 rounded-full bg-cyber-cyan/30 animate-ping pointer-events-none" />
       </motion.div>
 
       {/* Chat Window */}
@@ -161,26 +167,33 @@ const AIChatbot = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed bottom-24 right-6 z-50 w-[350px] md:w-[400px] h-[500px] bg-white/95 backdrop-blur-xl border border-pink-soft rounded-2xl shadow-2xl shadow-pink-primary/10 flex flex-col overflow-hidden"
+            className="fixed bottom-24 right-6 z-50 w-[350px] md:w-[400px] h-[500px] glass-effect border border-cyber-cyan/30 rounded-2xl shadow-2xl shadow-cyber-cyan/10 flex flex-col overflow-hidden"
           >
+            {/* Animated border glow */}
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyber-cyan via-cyber-blue to-cyber-purple opacity-20 blur-xl" />
+            
             {/* Header */}
-            <div className="p-4 bg-gradient-to-r from-pink-primary/10 to-pink-rose/10 border-b border-pink-soft">
+            <div className="relative p-4 bg-gradient-to-r from-cyber-cyan/10 via-cyber-blue/10 to-cyber-purple/10 border-b border-cyber-cyan/20">
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyber-cyan via-cyber-blue to-cyber-purple" />
               <div className="flex items-center gap-3">
                 <div className="relative">
-                  <div className="h-10 w-10 rounded-full bg-gradient-to-r from-pink-primary to-pink-rose flex items-center justify-center">
+                  <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-cyber-cyan via-cyber-blue to-cyber-purple flex items-center justify-center">
                     <Bot className="h-5 w-5 text-white" />
                   </div>
-                  <Heart className="absolute -top-1 -right-1 h-4 w-4 text-pink-rose fill-pink-rose animate-pulse" />
+                  <Sparkles className="absolute -top-1 -right-1 h-4 w-4 text-cyber-cyan animate-pulse" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground">Roksana's AI Assistant</h3>
-                  <p className="text-xs text-pink-primary/70">Ask me anything!</p>
+                  <h3 className="font-semibold text-foreground flex items-center gap-2">
+                    <Terminal className="w-4 h-4 text-cyber-cyan" />
+                    AI Assistant
+                  </h3>
+                  <p className="text-xs text-cyber-cyan/70 font-mono">// online • ready to help</p>
                 </div>
               </div>
             </div>
 
             {/* Messages */}
-            <ScrollArea className="flex-1 p-4" ref={scrollRef}>
+            <ScrollArea className="flex-1 p-4 relative" ref={scrollRef}>
               <div className="space-y-4">
                 {messages.map((message, index) => (
                   <motion.div
@@ -190,22 +203,22 @@ const AIChatbot = () => {
                     className={`flex gap-2 ${message.role === "user" ? "justify-end" : "justify-start"}`}
                   >
                     {message.role === "assistant" && (
-                      <div className="h-8 w-8 rounded-full bg-gradient-to-r from-pink-primary to-pink-rose flex items-center justify-center flex-shrink-0">
+                      <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-cyber-cyan via-cyber-blue to-cyber-purple flex items-center justify-center flex-shrink-0">
                         <Bot className="h-4 w-4 text-white" />
                       </div>
                     )}
                     <div
-                      className={`max-w-[80%] p-3 rounded-2xl ${
+                      className={`max-w-[80%] p-3 rounded-xl ${
                         message.role === "user"
-                          ? "bg-gradient-to-r from-pink-primary to-pink-rose text-white rounded-br-md"
-                          : "bg-pink-light text-foreground border border-pink-soft rounded-bl-md"
+                          ? "bg-gradient-to-r from-cyber-purple to-cyber-pink text-white rounded-br-sm"
+                          : "bg-surface-dark/80 text-foreground border border-cyber-cyan/20 rounded-bl-sm"
                       }`}
                     >
                       <p className="text-sm whitespace-pre-wrap">{message.content}</p>
                     </div>
                     {message.role === "user" && (
-                      <div className="h-8 w-8 rounded-full bg-pink-light flex items-center justify-center flex-shrink-0">
-                        <User className="h-4 w-4 text-pink-primary" />
+                      <div className="h-8 w-8 rounded-lg bg-cyber-purple/20 border border-cyber-purple/30 flex items-center justify-center flex-shrink-0">
+                        <User className="h-4 w-4 text-cyber-purple" />
                       </div>
                     )}
                   </motion.div>
@@ -216,14 +229,14 @@ const AIChatbot = () => {
                     animate={{ opacity: 1 }}
                     className="flex gap-2 justify-start"
                   >
-                    <div className="h-8 w-8 rounded-full bg-gradient-to-r from-pink-primary to-pink-rose flex items-center justify-center">
+                    <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-cyber-cyan via-cyber-blue to-cyber-purple flex items-center justify-center">
                       <Bot className="h-4 w-4 text-white" />
                     </div>
-                    <div className="bg-pink-light border border-pink-soft p-3 rounded-2xl rounded-bl-md">
+                    <div className="bg-surface-dark/80 border border-cyber-cyan/20 p-3 rounded-xl rounded-bl-sm">
                       <div className="flex gap-1">
-                        <span className="h-2 w-2 bg-pink-primary rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
-                        <span className="h-2 w-2 bg-pink-primary rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
-                        <span className="h-2 w-2 bg-pink-primary rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
+                        <span className="h-2 w-2 bg-cyber-cyan rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
+                        <span className="h-2 w-2 bg-cyber-blue rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
+                        <span className="h-2 w-2 bg-cyber-purple rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
                       </div>
                     </div>
                   </motion.div>
@@ -232,7 +245,7 @@ const AIChatbot = () => {
             </ScrollArea>
 
             {/* Input */}
-            <div className="p-4 border-t border-pink-soft bg-white/50">
+            <div className="relative p-4 border-t border-cyber-cyan/20 bg-surface-dark/50">
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -244,15 +257,15 @@ const AIChatbot = () => {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Ask about Roksana..."
-                  className="flex-1 bg-pink-light/50 border-pink-soft text-foreground placeholder:text-muted-foreground focus:border-pink-primary"
+                  className="flex-1 bg-surface-dark/80 border-cyber-cyan/30 text-foreground placeholder:text-muted-foreground focus:border-cyber-cyan focus:ring-cyber-cyan/20 font-mono text-sm"
                   disabled={isLoading}
                 />
                 <Button
                   type="submit"
                   disabled={isLoading || !input.trim()}
-                  className="bg-gradient-to-r from-pink-primary to-pink-rose hover:opacity-90 transition-opacity text-white"
+                  className="bg-gradient-to-r from-cyber-cyan via-cyber-blue to-cyber-purple hover:shadow-[0_0_20px_rgba(0,245,255,0.3)] transition-all text-white"
                 >
-                  <Send className="h-4 w-4" />
+                  <Zap className="h-4 w-4" />
                 </Button>
               </form>
             </div>
