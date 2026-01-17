@@ -46,9 +46,105 @@ const Projects = () => {
       featured: true
     },
     {
+      title: "MediUrgency - Medical Home Service",
+      description: "Backend-first medical emergency platform that processes patient audio, extracts symptoms, profiles urgency, and matches patients to doctors with automated alerting.",
+      emoji: "🏥",
+      technologies: ["FastAPI", "MongoDB", "Python", "ML", "Audio Processing", "Email API"],
+      features: [
+        "Audio symptom extraction and context analysis",
+        "ML-powered urgency profiling system",
+        "Intelligent doctor-patient matching algorithm",
+        "Automated emergency alert system",
+        "MongoDB integration for patient data management"
+      ],
+      github: "https://github.com/Roksana18cse04/Medical__Home_Service.git",
+      demo: "",
+      status: "Live"
+    },
+    {
+      title: "ADS AI - Business Ad Generator",
+      description: "AI-powered advertisement generation system that creates compelling business ads for any industry with customizable templates and smart content optimization.",
+      emoji: "📢",
+      technologies: ["Python", "AI/ML", "NLP", "Template Engine", "API"],
+      features: [
+        "Multi-industry ad template generation",
+        "AI-driven content optimization",
+        "Customizable design templates",
+        "Brand-specific messaging adaptation",
+        "Performance analytics integration"
+      ],
+      github: "https://github.com/Roksana18cse04/ADS_AI",
+      demo: "",
+      status: "Live"
+    },
+    {
+      title: "OOOWS Calendar - Smart Reminder System",
+      description: "Intelligent calendar application that generates contextual messages and sets alarms for important dates while organizing topics and events efficiently.",
+      emoji: "📅",
+      technologies: ["Python", "NLP", "Calendar API", "Notification System", "Database"],
+      features: [
+        "Smart message generation for events",
+        "Automated alarm setting for important dates",
+        "Topic categorization and organization",
+        "Context-aware reminder notifications",
+        "Integrated calendar synchronization"
+      ],
+      github: "https://github.com/Roksana18cse04/ooows_calander",
+      demo: "",
+      status: "Live"
+    },
+    {
+      title: "Netflix Movie Data Analysis",
+      description: "Comprehensive data analysis project exploring Netflix movie trends, viewer preferences, and content patterns using advanced statistical methods and ML techniques.",
+      emoji: "🎬",
+      technologies: ["Python", "Pandas", "Matplotlib", "Seaborn", "Scikit-learn", "Jupyter"],
+      features: [
+        "Exploratory data analysis with visualizations",
+        "Content trend analysis and pattern recognition",
+        "Machine learning for recommendation insights",
+        "Statistical modeling for viewer preferences",
+        "Interactive Jupyter notebook documentation"
+      ],
+      github: "https://github.com/Roksana18cse04/NetFilx-Movie_DataAnalysis.git",
+      demo: "",
+      status: "Live"
+    },
+    {
+      title: "Supermarket Flyer Generator",
+      description: "AI-powered promotional flyer generator for supermarkets using Google Gemini AI to create professional marketing materials with product integration and branding.",
+      emoji: "🛒",
+      technologies: ["FastAPI", "Google Gemini AI", "PDF Generation", "Image Processing", "Python"],
+      features: [
+        "AI-powered professional flyer design",
+        "Multiple customizable themes and layouts",
+        "Automatic product placement with pricing",
+        "Logo integration and brand consistency",
+        "PDF and image format output support"
+      ],
+      github: "https://github.com/Roksana18cse04/supermarket_leflet_create.git",
+      demo: "",
+      status: "Live"
+    },
+    {
+      title: "Iris Dataset Prediction API",
+      description: "FastAPI-based machine learning service for Iris flower classification with real-time predictions and model performance analytics.",
+      emoji: "🌸",
+      technologies: ["FastAPI", "Scikit-learn", "Python", "ML Models", "API Development"],
+      features: [
+        "Real-time Iris species classification",
+        "RESTful API with FastAPI framework",
+        "Model performance metrics and validation",
+        "Interactive API documentation",
+        "Scalable prediction service architecture"
+      ],
+      github: "https://github.com/Roksana18cse04/fastAPICreateIrisDatasetPrediction.git",
+      demo: "",
+      status: "Live"
+    },
+    {
       title: "Hair Shade Matcher",
       description: "Computer vision solution for precise hair color matching using advanced color science algorithms and deep learning for real-time shade recommendations.",
-      emoji: "💇‍♀️",
+      emoji: "💇♀️",
       technologies: ["Python", "OpenCV", "YOLOv8", "TensorRT", "ResNet", "K-Means"],
       features: [
         "ΔE LAB color distance for precise matching",

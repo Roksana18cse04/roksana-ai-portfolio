@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Heart } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { sendContactEmail, validateEmail, type ContactFormData } from "@/utils/emailService";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -27,31 +28,65 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate form data
+    if (!formData.name.trim() || !formData.email.trim() || !formData.subject.trim() || !formData.message.trim()) {
+      toast({
+        title: "Missing Information",
+        description: "Please fill in all required fields.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    if (!validateEmail(formData.email)) {
+      toast({
+        title: "Invalid Email",
+        description: "Please enter a valid email address.",
+        variant: "destructive"
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    toast({
-      title: "Message Sent! 💕",
-      description: "Thank you for reaching out. I'll get back to you soon.",
-    });
+    try {
+      const success = await sendContactEmail(formData as ContactFormData);
+      
+      if (success) {
+        toast({
+          title: "Message Sent! 💕",
+          description: "Thank you for reaching out. I'll get back to you soon.",
+        });
 
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: ""
-    });
-    setIsSubmitting(false);
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: ""
+        });
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      toast({
+        title: "Failed to Send Message",
+        description: "Something went wrong. Please try again or contact me directly at roksana18cse04@gmail.com",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
     {
       icon: Mail,
       label: "Email",
-      value: "roksana.tech.2000@gmail.com",
-      link: "mailto:roksana.tech.2000@gmail.com"
+      value: "roksana18cse04@gmail.com",
+      link: "mailto:roksana18cse04@gmail.com"
     },
     {
       icon: Phone,
@@ -83,7 +118,7 @@ const Contact = () => {
     {
       icon: Mail,
       label: "Email",
-      link: "mailto:roksana.tech.2000@gmail.com",
+      link: "mailto:roksana18cse04@gmail.com",
       color: "hover:text-pink-dark"
     }
   ];

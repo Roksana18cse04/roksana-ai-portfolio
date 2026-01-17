@@ -7,7 +7,7 @@ import { useTypingEffect } from "@/hooks/useAnimations";
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const typedText = useTypingEffect("AI/ML Engineer & Flutter Developer", 100);
+  const typedText = useTypingEffect("AI/ML Engineer & Python Developer", 100);
 
   useEffect(() => {
     setIsLoaded(true);
@@ -75,7 +75,7 @@ const Hero = () => {
             <div className="relative inline-block group">
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-pink-primary via-pink-rose to-pink-blush opacity-60 blur-xl group-hover:opacity-80 transition-opacity animate-pulse"></div>
               <img 
-                src="/Roksana.png" 
+                src="/Roksana1.jpg" 
                 alt="Roksana Akter" 
                 className="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-pink-soft shadow-glow mx-auto object-cover group-hover:scale-110 transition-transform duration-300"
               />
@@ -186,7 +186,7 @@ const Hero = () => {
               className="relative overflow-hidden group hover:scale-110 transition-all"
               asChild
             >
-              <a href="https://www.linkedin.com/in/roksana-akter-a79b77232/" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/in/roksana00mymensingh/" target="_blank" rel="noopener noreferrer">
                 <Linkedin className="h-6 w-6 group-hover:text-pink-rose transition-colors relative z-10" />
                 <div className="absolute inset-0 bg-pink-rose/10 scale-0 group-hover:scale-100 transition-transform rounded-full" />
               </a>

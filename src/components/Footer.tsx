@@ -17,7 +17,7 @@ const Footer = () => {
     },
     {
       icon: Mail,
-      href: "mailto:roksana.tech.2000@gmail.com",
+      href: "mailto:roksana18cse04@gmail.com",
       label: "Email"
     }
   ];
@@ -94,7 +94,7 @@ const Footer = () => {
             <h4 className="text-lg font-semibold text-foreground">Get In Touch</h4>
             <div className="space-y-2 text-sm">
               <div className="text-muted-foreground">
-                📧 roksana.tech.2000@gmail.com
+                📧 roksana18cse04@gmail.com
               </div>
               <div className="text-muted-foreground">
                 🌍 Available for remote work worldwide
