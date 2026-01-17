@@ -24,7 +24,7 @@ const Skills = () => {
       skills: [
         { name: "Python", level: 95 },
         { name: "JavaScript/TypeScript", level: 85 },
-        { name: "Dart/Flutter", level: 88 },
+        { name: "NodeJS", level: 88 },
         { name: "SQL", level: 90 },
       ]
     },
@@ -52,7 +52,7 @@ const Skills = () => {
 
   const technologies = [
     "Python", "TensorFlow", "PyTorch", "Scikit-learn", "Pandas", "NumPy",
-    "OpenCV", "NLTK", "Hugging Face", "Docker", "Flutter", "AWS", "GCP",
+    "OpenCV", "NLTK", "Hugging Face", "Docker", "NodeJS", "AWS", "GCP",
     "MongoDB", "PostgreSQL", "Redis", "FastAPI", "Streamlit", "Git"
   ];
 
