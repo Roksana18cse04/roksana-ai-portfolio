@@ -1,255 +1,230 @@
 import { motion } from "framer-motion";
 import { useInView } from "@/hooks/useAnimations";
 import { Badge } from "@/components/ui/badge";
-import { Brain, Code, Boxes, Wrench, Sparkles, Zap, Database, Cloud, Cpu, Eye } from "lucide-react";
-import Skills3DVisualization from "./Skills3DVisualization";
+import { Brain, Sparkles, Zap, Database, Cloud, Cpu, Eye, Code } from "lucide-react";
 import SkillsHexGrid from "./SkillsHexGrid";
-import { useState } from "react";
 
 const Skills = () => {
   const [setRef, isInView] = useInView(0.1);
-  const [activeView, setActiveView] = useState<'3d' | 'hex' | 'bars'>('3d');
-
-  const skillCategories = [
-    {
-      title: "Machine Learning & AI",
-      icon: Brain,
-      color: "cyber-cyan",
-      skills: [
-        { name: "Deep Learning", level: 95 },
-        { name: "Neural Networks", level: 90 },
-        { name: "Computer Vision", level: 85 },
-        { name: "Natural Language Processing", level: 88 },
-      ]
-    },
-    {
-      title: "Programming Languages",
-      icon: Code,
-      color: "cyber-purple",
-      skills: [
-        { name: "Python", level: 95 },
-        { name: "JavaScript/TypeScript", level: 85 },
-        { name: "Dart/Flutter", level: 88 },
-        { name: "SQL", level: 90 },
-      ]
-    },
-    {
-      title: "Frameworks & Libraries",
-      icon: Boxes,
-      color: "cyber-pink",
-      skills: [
-        { name: "TensorFlow", level: 92 },
-        { name: "PyTorch", level: 88 },
-        { name: "Scikit-learn", level: 95 },
-        { name: "Keras", level: 90 },
-      ]
-    },
-    {
-      title: "Tools & Technologies",
-      icon: Wrench,
-      color: "cyber-blue",
-      skills: [
-        { name: "Docker", level: 85 },
-        { name: "Git/GitHub", level: 90 },
-        { name: "AWS/GCP", level: 80 },
-        { name: "FastAPI", level: 85 },
-      ]
-    }
-  ];
 
   const expertiseAreas = [
-    { icon: Brain, title: "Deep Learning", desc: "Neural architectures & training", color: "cyber-cyan" },
-    { icon: Eye, title: "Computer Vision", desc: "Image & video analysis", color: "cyber-purple" },
-    { icon: Cpu, title: "NLP Systems", desc: "Language understanding", color: "cyber-pink" },
-    { icon: Database, title: "Data Engineering", desc: "Pipeline & processing", color: "cyber-blue" },
-    { icon: Cloud, title: "Cloud ML Ops", desc: "Deployment & scaling", color: "cyber-green" },
-    { icon: Zap, title: "Edge AI", desc: "Optimized inference", color: "cyber-orange" },
+    { icon: Brain, title: "Deep Learning", desc: "Neural architectures", color: "cyber-cyan" },
+    { icon: Eye, title: "Computer Vision", desc: "Image analysis", color: "cyber-blue" },
+    { icon: Cpu, title: "NLP Systems", desc: "Language AI", color: "cyber-cyan" },
+    { icon: Database, title: "Data Engineering", desc: "Pipeline design", color: "cyber-blue" },
+    { icon: Cloud, title: "Cloud ML Ops", desc: "Deployment", color: "cyber-cyan" },
+    { icon: Code, title: "Full Stack", desc: "End-to-end dev", color: "cyber-blue" },
   ];
+
+  const technologies = [
+    "Python", "TensorFlow", "PyTorch", "Scikit-learn", "Pandas", "NumPy",
+    "OpenCV", "NLTK", "Hugging Face", "Docker", "Kubernetes", "AWS",
+    "GCP", "MongoDB", "PostgreSQL", "Redis", "FastAPI", "Flask",
+    "Streamlit", "Git", "Linux", "CUDA", "Transformers", "YOLO"
+  ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        type: "spring" as const,
+        stiffness: 100,
+        damping: 12
+      }
+    }
+  };
 
   return (
     <section id="skills" className="py-24 relative overflow-hidden" ref={setRef}>
       {/* Animated background */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Grid pattern */}
-        <div 
-          className="absolute inset-0 opacity-10"
+        <motion.div 
+          className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage: `
-              linear-gradient(hsl(var(--cyber-cyan) / 0.1) 1px, transparent 1px),
-              linear-gradient(90deg, hsl(var(--cyber-cyan) / 0.1) 1px, transparent 1px)
+              linear-gradient(hsl(var(--cyber-cyan)) 1px, transparent 1px),
+              linear-gradient(90deg, hsl(var(--cyber-cyan)) 1px, transparent 1px)
             `,
-            backgroundSize: '60px 60px'
+            backgroundSize: '80px 80px'
+          }}
+          animate={{
+            backgroundPosition: ['0px 0px', '80px 80px']
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear"
           }}
         />
         
         {/* Floating orbs */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-cyber-cyan/10 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyber-purple/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyber-pink/5 rounded-full blur-3xl" />
+        <motion.div 
+          className="absolute top-20 left-10 w-96 h-96 bg-cyber-cyan/5 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.5, 0.3],
+            x: [0, 30, 0],
+            y: [0, -20, 0]
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div 
+          className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-cyber-blue/5 rounded-full blur-3xl"
+          animate={{
+            scale: [1.2, 1, 1.2],
+            opacity: [0.4, 0.6, 0.4],
+            x: [0, -40, 0],
+            y: [0, 30, 0]
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        />
         
         {/* Scan line */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-cyber-cyan/50 to-transparent animate-scan" />
-        </div>
+        <motion.div 
+          className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyber-cyan/50 to-transparent"
+          animate={{
+            y: ['-100vh', '100vh']
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+        
+        {/* Vertical data streams */}
+        {[...Array(5)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-px bg-gradient-to-b from-transparent via-cyber-blue/20 to-transparent"
+            style={{
+              left: `${15 + i * 20}%`,
+              height: '100%'
+            }}
+            animate={{
+              opacity: [0, 0.5, 0],
+              scaleY: [0, 1, 0]
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              delay: i * 0.8,
+              ease: "easeInOut"
+            }}
+          />
+        ))}
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-center mb-20"
         >
           <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-effect border border-cyber-cyan/30 mb-6"
-            whileHover={{ scale: 1.05 }}
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass-effect border border-cyber-cyan/30 mb-8"
+            whileHover={{ scale: 1.05, borderColor: 'hsl(var(--cyber-cyan))' }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
           >
             <Sparkles className="w-4 h-4 text-cyber-cyan animate-pulse" />
-            <span className="text-sm font-mono text-cyber-cyan">TECHNICAL ARSENAL</span>
+            <span className="text-sm font-mono text-cyber-cyan tracking-wider">TECHNICAL ARSENAL</span>
           </motion.div>
           
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 font-orbitron">
-            <span className="bg-gradient-to-r from-cyber-cyan via-cyber-purple to-cyber-pink bg-clip-text text-transparent">
+          <motion.h2 
+            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 font-orbitron"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          >
+            <span className="bg-gradient-to-r from-cyber-cyan via-cyber-blue to-cyber-cyan bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient">
               Skills & Expertise
             </span>
-          </h2>
+          </motion.h2>
           
-          <p className="text-xl text-foreground/70 max-w-3xl mx-auto font-light">
+          <motion.p 
+            className="text-lg md:text-xl text-foreground/60 max-w-3xl mx-auto font-light"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+          >
             A comprehensive toolkit for building intelligent systems and scalable AI solutions
-          </p>
+          </motion.p>
         </motion.div>
 
-        {/* View toggle */}
+        {/* Hex Grid - Main visualization */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.2 }}
-          className="flex justify-center gap-4 mb-12"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="mb-24"
         >
-          {[
-            { id: '3d', label: '3D Orbit', icon: '🌐' },
-            { id: 'hex', label: 'Hex Grid', icon: '⬡' },
-            { id: 'bars', label: 'Progress', icon: '📊' },
-          ].map((view) => (
-            <motion.button
-              key={view.id}
-              onClick={() => setActiveView(view.id as '3d' | 'hex' | 'bars')}
-              className={`px-6 py-3 rounded-xl font-mono text-sm transition-all ${
-                activeView === view.id
-                  ? 'bg-gradient-to-r from-cyber-cyan to-cyber-purple text-surface-dark font-bold'
-                  : 'glass-effect text-foreground/70 border border-cyber-cyan/30 hover:border-cyber-cyan/60'
-              }`}
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span className="mr-2">{view.icon}</span>
-              {view.label}
-            </motion.button>
-          ))}
-        </motion.div>
-
-        {/* Skills visualization */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ delay: 0.3, duration: 0.8 }}
-          className="mb-20"
-        >
-          {activeView === '3d' && <Skills3DVisualization />}
-          {activeView === 'hex' && <SkillsHexGrid />}
-          {activeView === 'bars' && (
-            <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-              {skillCategories.map((category, categoryIndex) => (
-                <motion.div
-                  key={categoryIndex}
-                  initial={{ opacity: 0, x: categoryIndex % 2 === 0 ? -50 : 50 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ delay: categoryIndex * 0.1 + 0.3, duration: 0.6 }}
-                >
-                  <div className="glass-effect rounded-2xl p-6 border border-cyber-cyan/20 hover:border-cyber-cyan/40 transition-all group">
-                    {/* Header */}
-                    <div className="flex items-center gap-4 mb-6">
-                      <motion.div
-                        className={`p-3 rounded-xl bg-${category.color}/20 group-hover:bg-${category.color}/30 transition-colors`}
-                        whileHover={{ scale: 1.1, rotate: 5 }}
-                      >
-                        <category.icon className={`w-6 h-6 text-${category.color}`} />
-                      </motion.div>
-                      <h3 className="text-lg font-bold font-mono">{category.title}</h3>
-                    </div>
-                    
-                    {/* Skills */}
-                    <div className="space-y-4">
-                      {category.skills.map((skill, skillIndex) => (
-                        <motion.div
-                          key={skillIndex}
-                          initial={{ opacity: 0 }}
-                          animate={isInView ? { opacity: 1 } : {}}
-                          transition={{ delay: categoryIndex * 0.1 + skillIndex * 0.05 + 0.5 }}
-                        >
-                          <div className="flex justify-between mb-2">
-                            <span className="text-sm font-mono text-foreground/80">{skill.name}</span>
-                            <span className={`text-sm font-bold text-${category.color}`}>{skill.level}%</span>
-                          </div>
-                          <div className="h-2 bg-surface-medium rounded-full overflow-hidden">
-                            <motion.div
-                              className={`h-full rounded-full bg-gradient-to-r from-${category.color} to-${category.color}/60`}
-                              initial={{ width: 0 }}
-                              animate={isInView ? { width: `${skill.level}%` } : {}}
-                              transition={{ delay: categoryIndex * 0.1 + skillIndex * 0.1 + 0.6, duration: 1 }}
-                            >
-                              {/* Shimmer effect */}
-                              <div className="h-full w-full relative overflow-hidden">
-                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full animate-shimmer" />
-                              </div>
-                            </motion.div>
-                          </div>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          )}
+          <SkillsHexGrid />
         </motion.div>
 
         {/* Expertise areas */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.6 }}
-          className="mb-16"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="mb-20"
         >
-          <h3 className="text-2xl font-bold text-center mb-8 font-mono">
+          <motion.h3 
+            className="text-2xl md:text-3xl font-bold text-center mb-12 font-mono"
+            variants={itemVariants}
+          >
             <span className="text-cyber-cyan">&lt;</span>
-            Core Expertise
+            <span className="text-foreground">Core Expertise</span>
             <span className="text-cyber-cyan">/&gt;</span>
-          </h3>
+          </motion.h3>
           
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {expertiseAreas.map((area, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.7 + index * 0.1 }}
+                variants={itemVariants}
                 className="group"
               >
                 <motion.div
-                  className={`glass-effect rounded-xl p-4 border border-${area.color}/20 hover:border-${area.color}/50 transition-all text-center cursor-pointer`}
-                  whileHover={{ scale: 1.05, y: -5 }}
+                  className="glass-effect rounded-2xl p-5 border border-cyber-cyan/10 hover:border-cyber-cyan/40 transition-all duration-500 text-center cursor-pointer h-full"
+                  whileHover={{ 
+                    scale: 1.05, 
+                    y: -8,
+                    boxShadow: '0 20px 40px -20px hsl(var(--cyber-cyan) / 0.3)'
+                  }}
                 >
                   <motion.div
-                    className={`w-12 h-12 rounded-xl bg-${area.color}/20 flex items-center justify-center mx-auto mb-3 group-hover:bg-${area.color}/30`}
+                    className="w-14 h-14 rounded-xl bg-gradient-to-br from-cyber-cyan/20 to-cyber-blue/10 flex items-center justify-center mx-auto mb-4 group-hover:from-cyber-cyan/30 group-hover:to-cyber-blue/20 transition-all"
                     whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.5 }}
+                    transition={{ duration: 0.6 }}
                   >
-                    <area.icon className={`w-6 h-6 text-${area.color}`} />
+                    <area.icon className="w-7 h-7 text-cyber-cyan" />
                   </motion.div>
-                  <h4 className="font-bold text-sm mb-1">{area.title}</h4>
-                  <p className="text-xs text-foreground/60">{area.desc}</p>
+                  <h4 className="font-bold text-sm mb-1 text-foreground group-hover:text-cyber-cyan transition-colors">{area.title}</h4>
+                  <p className="text-xs text-foreground/50">{area.desc}</p>
                 </motion.div>
               </motion.div>
             ))}
@@ -258,66 +233,101 @@ const Skills = () => {
 
         {/* Technologies cloud */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.8 }}
-          className="text-center"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
         >
-          <h3 className="text-xl font-bold mb-6 font-mono text-foreground/80">
+          <h3 className="text-xl font-bold mb-8 font-mono text-foreground/70">
             Technologies & Tools
           </h3>
           
-          <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
-            {[
-              "Python", "TensorFlow", "PyTorch", "Scikit-learn", "Pandas", "NumPy",
-              "OpenCV", "NLTK", "Hugging Face", "Docker", "Kubernetes", "AWS",
-              "GCP", "MongoDB", "PostgreSQL", "Redis", "FastAPI", "Flask",
-              "Streamlit", "Git", "Linux", "CUDA", "Transformers", "YOLO"
-            ].map((tech, index) => (
+          <motion.div 
+            className="flex flex-wrap justify-center gap-3 max-w-5xl mx-auto"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            {technologies.map((tech, index) => (
               <motion.div
                 key={tech}
-                initial={{ opacity: 0, scale: 0 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ delay: 0.9 + index * 0.03, type: "spring" }}
-                whileHover={{ scale: 1.1, y: -3 }}
+                variants={{
+                  hidden: { opacity: 0, scale: 0, rotate: -180 },
+                  visible: { 
+                    opacity: 1, 
+                    scale: 1, 
+                    rotate: 0,
+                    transition: {
+                      type: "spring",
+                      stiffness: 200,
+                      damping: 15,
+                      delay: index * 0.03
+                    }
+                  }
+                }}
+                whileHover={{ 
+                  scale: 1.15, 
+                  y: -5,
+                  transition: { type: "spring", stiffness: 400, damping: 17 }
+                }}
               >
                 <Badge 
-                  className="px-4 py-2 text-sm font-mono bg-surface-dark/80 border border-cyber-cyan/30 text-cyber-cyan hover:border-cyber-cyan hover:bg-cyber-cyan/10 transition-all cursor-pointer"
+                  className="px-4 py-2 text-sm font-mono bg-surface-dark/80 border border-cyber-cyan/20 text-cyber-cyan hover:border-cyber-cyan hover:bg-cyber-cyan/10 hover:shadow-lg hover:shadow-cyber-cyan/20 transition-all cursor-pointer"
                 >
                   {tech}
                 </Badge>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </motion.div>
 
         {/* Stats bar */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 1 }}
+          initial={{ opacity: 0, y: 50, scale: 0.95 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8 }}
           className="mt-16"
         >
-          <div className="glass-effect rounded-2xl p-8 border border-cyber-purple/20">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="glass-effect rounded-3xl p-8 md:p-10 border border-cyber-blue/20 relative overflow-hidden">
+            {/* Background glow */}
+            <div className="absolute inset-0 bg-gradient-to-r from-cyber-cyan/5 via-transparent to-cyber-blue/5" />
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 relative z-10">
               {[
-                { value: "50+", label: "Technologies Mastered", icon: "🔧" },
-                { value: "3+", label: "Years Experience", icon: "📅" },
-                { value: "20+", label: "Projects Completed", icon: "🚀" },
-                { value: "∞", label: "Learning Never Stops", icon: "📚" },
+                { value: "50+", label: "Technologies", icon: <Zap className="w-6 h-6" /> },
+                { value: "3+", label: "Years Experience", icon: <Sparkles className="w-6 h-6" /> },
+                { value: "20+", label: "Projects", icon: <Cpu className="w-6 h-6" /> },
+                { value: "∞", label: "Always Learning", icon: <Brain className="w-6 h-6" /> },
               ].map((stat, index) => (
                 <motion.div
                   key={index}
-                  className="text-center"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 1.1 + index * 0.1 }}
+                  className="text-center group"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.15 + 0.3 }}
+                  whileHover={{ scale: 1.05 }}
                 >
-                  <div className="text-3xl mb-2">{stat.icon}</div>
-                  <div className="text-3xl md:text-4xl font-bold font-orbitron bg-gradient-to-r from-cyber-cyan to-cyber-purple bg-clip-text text-transparent">
+                  <motion.div 
+                    className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-cyber-cyan/10 text-cyber-cyan mb-3 group-hover:bg-cyber-cyan/20 transition-colors"
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    {stat.icon}
+                  </motion.div>
+                  <motion.div 
+                    className="text-3xl md:text-4xl font-bold font-orbitron bg-gradient-to-r from-cyber-cyan to-cyber-blue bg-clip-text text-transparent"
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.15 + 0.5, type: "spring" }}
+                  >
                     {stat.value}
-                  </div>
-                  <div className="text-sm text-foreground/60 font-mono mt-1">{stat.label}</div>
+                  </motion.div>
+                  <div className="text-sm text-foreground/50 font-mono mt-1">{stat.label}</div>
                 </motion.div>
               ))}
             </div>
