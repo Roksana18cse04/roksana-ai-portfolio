@@ -9,7 +9,7 @@ const Experience = () => {
       title: "AI/ML Engineer",
       company: "Betopia Group",
       location: "Mohakhali, Dhaka",
-      period: "March 2025 - Present",
+      period: "January 2025 - Present",
       description: [
         "Working on cutting-edge AI/ML projects as part of the innovative team",
         "Developing intelligent solutions for business automation and optimization",
